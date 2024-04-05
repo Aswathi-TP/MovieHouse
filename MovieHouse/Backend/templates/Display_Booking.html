@@ -1,0 +1,76 @@
+<!--<!DOCTYPE html>-->
+{% extends 'index.html' %}
+{% block content %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="col-12" style="margin-top:20px;">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="card-title">Booking Details</h4>
+
+                            </div>
+                            <div class="table-responsive">
+                                <table class="table">
+                                    <thead class="thead-light">
+                                        <tr>
+                                            <th scope="col">Booking ID</th>
+                                            <th scope="col">Name</th>
+                                            <th scope="col">Movie Name</th>
+                                            <th scope="col">Theatre Name</th>
+                                            <th scope="col">Theatre Address</th>
+                                            <th scope="col">Selected Seats</th>
+                                            <th scope="col">Selected Date</th>
+                                            <th scope="col">Selected Time</th>
+                                            <th scope="col">Amount Paid</th>
+
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                    {% for i in data %}
+                                    <tr>
+                                        <td>{{i.book_id}}</td>
+                                        <td>{{i.name}}</td>
+                                        <td>{{i.movie_name}}</td>
+                                        <td>{{i.theatre_name}}</td>
+                                        <td>{{i.theatre_address}}</td>
+                                        <td>{{i.selected_seats}}</td>
+                                        <td>{{i.selected_date}}</td>
+                                        <td>{{i.selected_time}}</td>
+                                        <td>{{i.amount_paid}}</td>
+                                    </tr>
+                                    {% endfor %}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+{% if messages %}
+    {% for i in messages %}
+        {% if i.tags == 'warning' %}
+            <script>
+                swal('{{i}}','','warning')
+            </script>
+        {% elif i.tags == 'error' %}
+            <script>
+                swal('{{i}}','','error')
+            </script>
+        {% elif i.tags == 'success' %}
+            <script>
+                swal('{{i}}','','success')
+            </script>
+        {% else %}
+             <script>
+                swal('{{i}}','','info')
+            </script>
+        {% endif %}
+    {% endfor %}
+{% endif %}
+</body>
+</html>
+{% endblock %}

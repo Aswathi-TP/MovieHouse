@@ -1,0 +1,76 @@
+<!--<!DOCTYPE html>-->
+{% extends 'index.html' %}
+{% block content %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="col-12" style="margin-top:20px;">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="card-title">Theatre Screen Details</h4>
+
+                            </div>
+                            <div class="table-responsive">
+                                <table class="table">
+                                    <thead class="thead-light">
+                                        <tr>
+                                            <th scope="col">Theatre Name</th>
+                                            <th scope="col">Screen Name</th>
+                                            <th scope="col">Total Seats</th>
+                                            <th scope="col">Premium Seats</th>
+                                            <th scope="col">Standard Seats</th>
+                                            <th scope="col">Option</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                    {% for i in data %}
+                                    <tr>
+                                        <td>{{i.Theatre}}</td>
+                                        <td>{{i.ScreenName}}</td>
+                                        <td>{{i.TotalSeat}}</td>
+                                        <td>{{i.PremiumSeat}}</td>
+                                        <td>{{i.StandardSeat}}</td>
+                                        <td>
+                                            <a href="{% url 'edit_screen' s_id=i.id %}">
+                                              <i class="fas fa-edit" style="color:green;padding-left:5px;"></i>
+                                            </a>
+                                            <a href="{% url 'delete_screen' s_id=i.id %}">
+                                                <i class="fas fa-trash-alt" style="color:red;padding-left:10px;"></i>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                    {% endfor %}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+{% if messages %}
+    {% for i in messages %}
+        {% if i.tags == 'warning' %}
+            <script>
+                swal('{{i}}','','warning')
+            </script>
+        {% elif i.tags == 'error' %}
+            <script>
+                swal('{{i}}','','error')
+            </script>
+        {% elif i.tags == 'success' %}
+            <script>
+                swal('{{i}}','','success')
+            </script>
+        {% else %}
+             <script>
+                swal('{{i}}','','info')
+            </script>
+        {% endif %}
+    {% endfor %}
+{% endif %}
+</body>
+</html>
+{% endblock %}

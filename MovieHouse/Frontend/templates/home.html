@@ -1,0 +1,78 @@
+<!--<!DOCTYPE html>-->
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="div1">
+</div>
+ <div class="div2">
+     <h1 style="text-align:center;padding-top:50px;">Welcome to MovieHouse</h1>
+     <div class="div3">
+         <h3 style="color:white;padding-top:60px;">Hey! Don't have an account yet! Please Join with Us!</h3>
+         <button class="btn"><a href="{% url 'register' %}" style="color:white;text-decoration:None;"> Sign Up</a></button>
+     </div>
+     <div class="div4">
+         <h3 style="color:white;padding-top:45px;">Already have an account! Then Please Login!!</h3>
+         <button class="btn" ><a href="{% url 'UserLogin' %}" style="color:white;text-decoration:None;">Login</button>
+     </div>
+ </div>
+
+
+<style>
+.div1{
+
+       height:650px;
+       background-image:url({% static 'home\img\homebg.jpg' %});
+       background-repeat:no-repeat;
+       background-size:100% 100%;
+
+        }
+    .div2{
+        width:600px;
+        height:430px;
+
+        margin-left:600px;
+        margin-top:-550px;
+        background: transparent;
+        border-radius: 10px;
+        box-shadow: 0 4px 18px #f54545;
+    }
+    .div3{
+        width:260px;
+        margin-left:20px;
+        height:300px;
+
+        margin-top:40px;
+        text-align:center;
+    }
+    .div4{
+        width:260px;
+        margin-left:310px;
+        height:300px;
+
+        margin-top:-300px;
+        text-align:center;
+    }
+    .btn{
+    flex-basis: 48%;
+    background: #b81616;
+    color: #fff;
+    height: 40px;
+    border-radius: 20px;
+    border: 0;
+    outline: 0;
+    cursor: pointer;
+    transition: background 1s;
+    width:200px;
+    margin-top:30px;
+}
+    .btn:hover{
+    background: green;
+    }
+</style>
+
+</body>
+</html>

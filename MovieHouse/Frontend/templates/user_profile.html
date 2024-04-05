@@ -1,0 +1,350 @@
+
+<!--<!DOCTYPE html>-->
+{% load static %}
+<html lang="zxx">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Amin Template">
+    <meta name="keywords" content="Amin, unica, creative, html">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Amin | Template</title>
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600,700,800,900&display=swap"
+        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Cinzel:400,700,900&display=swap" rel="stylesheet">
+
+    <!-- Css Styles -->
+    <link rel="stylesheet" href="{% static 'home/css/bootstrap.min.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'home/css/font-awesome.min.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'home/css/elegant-icons.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'home/css/owl.carousel.min.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'home/css/barfiller.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'home/css/magnific-popup.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'home/css/slicknav.min.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'home/css/style.css' %}" type="text/css">
+</head>
+
+<body>
+    <!-- Page Preloder -->
+    <div id="preloder">
+        <div class="loader"></div>
+    </div>
+
+    <!-- Humberger Menu Begin -->
+    <div class="humberger-menu-overlay"></div>
+    <div class="humberger-menu-wrapper">
+        <div class="hw-logo">
+            <a href="#"><img src="{% static 'home/img/f-logo.png' %}" alt=""></a>
+        </div>
+        <div class="hw-menu mobile-menu">
+            <ul>
+                <li><a href="{% url 'homepage' %}">Home</a></li>
+                <li><a href="{% url 'about_page' %}">About</a></li>
+                <li><a href="{% url 'contact_page' %}">Contact</a></li>
+                {% if username %}
+                <li><a href="{% url 'user_logout' %}">LogOut</a></li>
+                {% endif %}
+            </ul>
+        </div>
+        <div id="mobile-menu-wrap"></div>
+        <div class="hw-copyright">
+            Copyright © 2024. All rights reserved
+        </div>
+        <div class="hw-social">
+            <a href="#"><i class="fa fa-facebook" style="margin-top:15px;"></i></a>
+            <a href="#"><i class="fa fa-twitter" style="margin-top:15px;"></i></a>
+            <a href="#"><i class="fa fa-youtube-play" style="margin-top:15px;"></i></a>
+            <a href="#"><i class="fa fa-instagram" style="margin-top:15px;"></i></a>
+        </div>
+
+    </div>
+    <!-- Humberger Menu End -->
+
+    <!-- Header Section Begin -->
+    <header class="header-section">
+        <div class="ht-options">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6 col-md-8">
+                        <div class="ht-widget">
+                            <ul>
+                         <li><i class="fa fa-clock-o"></i>{{ current_date }}</li>
+                    {% if username %}
+                <li class="nav-item"><a href="{% url 'user_logout' %}" class="nav-link" style="color:white;">Welcome {{ username }} / Logout</a></li>
+                                {% else %}
+                <li class="nav-item"><a href="{% url 'home' %}" class="nav-link" style="color:white;">Register / Login</a></li>
+                    {% endif %}
+
+<!--                <li class="nav-item"><a href="{% url 'user_login' %}" class="nav-link">Register / Login</a></li>-->
+
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-4">
+                        <div class="ht-social">
+                            <a href="#"><i class="fa fa-facebook"></i></a>
+                            <a href="#"><i class="fa fa-twitter"></i></a>
+                            <a href="#"><i class="fa fa-youtube-play"></i></a>
+                            <a href="#"><i class="fa fa-instagram"></i></a>
+                            <a href="#"><i class="fa fa-envelope-o"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="logo">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12 text-center">
+                       <a href="./index.html"><img src="{% static 'home/img/logo.png' %}" alt=""></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="nav-options">
+            <div class="container">
+                <div class="humberger-menu humberger-open">
+                    <i class="fa fa-bars"></i>
+                </div>
+                <div class="nav-search search-switch">
+                    <i class="fa fa-search"></i>
+                </div>
+                <div class="nav-menu">
+                    <ul>
+                        <li><a href="{% url 'homepage' %}"><span>Home</span></a></li>
+
+                        <li><a href="{% url 'movie_details' %}"><span>Movies </span></a></li>
+                        <li><a href="{% url 'contact_page' %}"><span>Contact</span></a></li>
+                         <li><a href="{% url 'about_page' %}"><span>About</span></a></li>
+                         {% if username %}
+                        <li><a href="{% url 'booking_history' %}"><span>Booking History</span></a></li>
+                        <li class="active">
+                            <a href="#"><span>{{ username }}<i class="fa fa-angle-down"></i></span></a>
+                            <ul class="dropdown">
+                                <li><a href="{% url 'profile_update' %}">Profile</a></li>
+                                <li><a href="{% url 'user_logout' %}">LogOut</a></li>
+
+                            </ul>
+                        </li>
+
+                        {% else %}
+                         <li><a href="{% url 'login_signup' %}"> <span> Register / Login</span></a></li>
+
+                        {% endif %}
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- Header End -->
+
+    <!-- Breadcrumb Section Begin -->
+    <section class="breadcrumb-section set-bg spad" data-setbg="{% static 'home/img/profile.jpg' %}" style="background-size:100% 100%;">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <div class="breadcrumb-text">
+                        <h3>My Profile</h3>
+                        <div class="bt-option">
+                            <a href="{% url 'homepage' %}">Home</a>
+                            <span>Profile</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Breadcrumb Section End -->
+
+    <!-- Contact Section Begin -->
+    <section class="contact-section spad">
+        <div class="container">
+            <form method="post" enctype="multipart/form-data" class="form-box">
+    {% csrf_token %}
+    <div class="form-group">
+        <label for="id_name" style="margin-left:100px;color:white;">Name:</label><br>
+        {{ form.name }}
+    </div>
+    <div class="form-group">
+        <label for="id_phone" style="margin-left:100px;color:white;">Phone:</label><br>
+        {{ form.phone }}
+    </div>
+    <div class="form-group">
+        <label for="id_email" style="margin-left:100px;color:white;">Email:</label><br>
+        {{ form.email }}
+    </div>
+    <div class="form-group">
+        <label for="id_place" style="margin-left:100px;color:white;">Place:</label><br>
+        {{ form.place }}
+    </div>
+                <div class="pic">
+    <div class="form-group">
+        <label for="id_profile_picture" style="color:white;">Profile Picture:</label><br>
+        {% if form.instance.profile_picture %}
+            <img src="{{ form.instance.profile_picture.url }}" alt="Profile Picture" style="margin-left:80px;border-radius:100%">
+        {% endif %}
+        <br>
+        <input type="file" name="profile_picture">
+    </div>
+                    </div>
+                <div style="text-align:center;margin-top:100px;">
+                    <button type="submit" class="btn btn-success" style="width:300px;height:50px;border-radius:30px;"><b>Update Profile</b></button>
+                    </div>
+</form>
+
+        </div>
+    </section>
+    <!-- Contact Section End -->
+
+    <!-- Footer Section Begin -->
+    <footer class="footer-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="footer-about">
+                        <div class="fa-logo">
+                            <a href="#"><img src="{% static 'home/img/f-logo.png' %}" alt=""></a>
+                        </div>
+                        <p>Providing user friendly interface for booking movie tickets.</p>
+                        <div class="fa-social">
+                            <a href="#"><i class="fa fa-facebook" style="margin-top:15px;"></i></a>
+                            <a href="#"><i class="fa fa-twitter" style="margin-top:15px;"></i></a>
+                            <a href="#"><i class="fa fa-youtube-play" style="margin-top:15px;"></i></a>
+                            <a href="#"><i class="fa fa-instagram" style="margin-top:15px;"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-12">
+                    <div class="editor-choice">
+                        <div class="section-title">
+                            <h5>Editor's Choice</h5>
+                        </div>
+                        <div class="ec-item">
+                            <div class="ec-pic">
+                                <img src="img/trending/editor-1.jpg" alt="">
+                            </div>
+                            <div class="ec-text">
+                                <h6><a href="#">A Monster Prom poster got hijacked for a Papa Roach concert...</a>
+                                </h6>
+                                <ul>
+                                    <li><i class="fa fa-clock-o"></i> Aug 01, 2019</li>
+                                    <li><i class="fa fa-comment-o"></i> 12</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="ec-item">
+                            <div class="ec-pic">
+                                <img src="img/trending/editor-2.jpg" alt="">
+                            </div>
+                            <div class="ec-text">
+                                <h6><a href="#">Facebook wants to read your thoughts with its augmented...</a>
+                                </h6>
+                                <ul>
+                                    <li><i class="fa fa-clock-o"></i> Aug 01, 2019</li>
+                                    <li><i class="fa fa-comment-o"></i> 12</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+<!--                <div class="col-lg-4 col-md-6">-->
+<!--                    <div class="tags-cloud">-->
+<!--                        <div class="section-title">-->
+<!--                            <h5>Tags Cloud</h5>-->
+<!--                        </div>-->
+<!--                        <div class="tag-list">-->
+<!--                            <a href="#"><span>Gaming</span></a>-->
+<!--                            <a href="#"><span>Platform</span></a>-->
+<!--                            <a href="#"><span>Playstation</span></a>-->
+<!--                            <a href="#"><span>Hardware</span></a>-->
+<!--                            <a href="#"><span>Reviews</span></a>-->
+<!--                            <a href="#"><span>Simulation</span></a>-->
+<!--                            <a href="#"><span>Strategy</span></a>-->
+<!--                            <a href="#"><span>Scientific</span></a>-->
+<!--                            <a href="#"><span>References</span></a>-->
+<!--                            <a href="#"><span>Role-playing</span></a>-->
+<!--                            <a href="#"><span>Adventurea</span></a>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+            </div>
+            <div class="copyright-area">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="ca-text"><p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+  Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved |
+  <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p></div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="ca-links">
+                            <a href="{% url 'about_page' %}">About</a>
+
+                            <a href="{% url 'contact_page' %}">Contact</a>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- Footer Section End -->
+
+
+
+    <!-- Search model Begin -->
+    <div class="search-model">
+        <div class="h-100 d-flex align-items-center justify-content-center">
+            <div class="search-close-switch">+</div>
+            <form class="search-model-form" method="get" action="{% url 'search_view' %}">
+                <input type="text" id="search-input" name="query" placeholder="Search here.....">
+            </form>
+        </div>
+    </div>
+    <!-- Search model end -->
+<style>
+    .form-box{
+    height:750px;
+    background: black;
+    border-radius: 10px;
+    box-shadow: 0 4px 18px black;
+    padding-top:100px;
+}
+    .form-box input[type=text],
+    .form-box input[type=email],
+    .form-box input[type=file] {
+        width: 400px;
+        padding: 12px 20px;
+        margin: 8px 0;
+        display: inline-block;
+        border: 1px solid #ccc;
+        border-radius: 30px;
+        box-sizing: border-box;
+        background: transparent;
+        color:white;
+
+    }
+    .form-box input[type=text],
+    .form-box input[type=email]{
+    margin-left:100px;
+    }
+    .pic{
+    margin-left:680px;
+    margin-top:-400px;
+    }
+</style>
+    <!-- Js Plugins -->
+    <script src="{% static 'home/js/jquery-3.3.1.min.js' %}"></script>
+    <script src="{% static 'home/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'home/js/jquery.magnific-popup.min.js' %}"></script>
+    <script src="{% static 'home/js/circle-progress.min.js' %}"></script>
+    <script src="{% static 'home/js/jquery.barfiller.js' %}"></script>
+    <script src="{% static 'home/js/jquery.slicknav.js' %}"></script>
+    <script src="{% static 'home/js/owl.carousel.min.js' %}"></script>
+    <script src="{% static 'home/js/main.js' %}"></script>
+</body>
+
+</html>

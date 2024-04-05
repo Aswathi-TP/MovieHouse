@@ -1,0 +1,932 @@
+
+<!--<!DOCTYPE html>-->
+{% load static %}
+<html lang="zxx">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Amin Template">
+    <meta name="keywords" content="Amin, unica, creative, html">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Amin | Template</title>
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600,700,800,900&display=swap"
+        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Cinzel:400,700,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+    <!-- Css Styles -->
+    <link rel="stylesheet" href="{% static 'home/css/bootstrap.min.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'home/css/font-awesome.min.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'home/css/elegant-icons.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'home/css/owl.carousel.min.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'home/css/barfiller.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'home/css/magnific-popup.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'home/css/slicknav.min.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'home/css/style.css' %}" type="text/css">
+
+</head>
+
+<body>
+    <!-- Page Preloder -->
+    <div id="preloder">
+        <div class="loader"></div>
+    </div>
+
+    <!-- Humberger Menu Begin -->
+    <div class="humberger-menu-overlay"></div>
+    <div class="humberger-menu-wrapper">
+        <div class="hw-logo">
+            <a href="#"><img src="{% static 'home/img/f-logo.png' %}" alt=""></a>
+        </div>
+        <div class="hw-menu mobile-menu">
+            <ul>
+                <li><a href="{% url 'homepage' %}">Home</a></li>
+                <li><a href="{% url 'about_page' %}">About</a></li>
+                <li><a href="{% url 'contact_page' %}">Contact</a></li>
+                {% if username %}
+                <li><a href="{% url 'user_logout' %}">LogOut</a></li>
+                {% endif %}
+            </ul>
+        </div>
+        <div id="mobile-menu-wrap"></div>
+        <div class="hw-copyright">
+            Copyright © 2024. All rights reserved
+        </div>
+        <div class="hw-social">
+            <a href="#"><i class="fa fa-facebook" style="margin-top:15px;"></i></a>
+            <a href="#"><i class="fa fa-twitter" style="margin-top:15px;"></i></a>
+            <a href="#"><i class="fa fa-youtube-play" style="margin-top:15px;"></i></a>
+            <a href="#"><i class="fa fa-instagram" style="margin-top:15px;"></i></a>
+        </div>
+
+    </div>
+    <!-- Humberger Menu End -->
+
+    <!-- Header Section Begin -->
+     <header class="header-section">
+        <div class="ht-options">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6 col-md-8">
+                        <div class="ht-widget">
+                            <ul>
+                         <li><i class="fa fa-clock-o"></i>{{ current_date }}</li>
+                    {% if username %}
+                <li class="nav-item"><a href="{% url 'user_logout' %}" class="nav-link" style="color:white;">Welcome {{ username }} / Logout</a></li>
+                                {% else %}
+                <li class="nav-item"><a href="{% url 'login_signup' %}" class="nav-link" style="color:white;">Register / Login</a></li>
+                    {% endif %}
+
+<!--                <li class="nav-item"><a href="{% url 'user_login' %}" class="nav-link">Register / Login</a></li>-->
+
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-4">
+                        <div class="ht-social">
+                            <a href="#"><i class="fa fa-facebook"></i></a>
+                            <a href="#"><i class="fa fa-twitter"></i></a>
+                            <a href="#"><i class="fa fa-youtube-play"></i></a>
+                            <a href="#"><i class="fa fa-instagram"></i></a>
+                            <a href="#"><i class="fa fa-envelope-o"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="logo">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12 text-center">
+                       <a href="./index.html"><img src="{% static 'home/img/logo.png' %}" alt=""></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="nav-options">
+            <div class="container">
+                <div class="humberger-menu humberger-open">
+                    <i class="fa fa-bars"></i>
+                </div>
+                <div class="nav-search search-switch">
+                    <i class="fa fa-search"></i>
+                </div>
+                <div class="nav-menu">
+                    <ul>
+                        <li><a href="{% url 'homepage' %}"><span>Home</span></a></li>
+
+                        <li><a href="{% url 'movie_details' %}"><span>Movies </span></a></li>
+                        <li><a href="{% url 'contact_page' %}"><span>Contact</span></a></li>
+                         <li><a href="{% url 'about_page' %}"><span>About</span></a></li>
+                         {% if username %}
+                        <li><a href="{% url 'booking_history' %}"><span>Booking History</span></a></li>
+                        <li>
+                            <a href="#"><span>{{ username }}<i class="fa fa-angle-down"></i></span></a>
+                            <ul class="dropdown">
+                                <li><a href="{% url 'profile_update' %}">Profile</a></li>
+                                <li><a href="{% url 'user_logout' %}">LogOut</a></li>
+
+                            </ul>
+                        </li>
+
+                        {% else %}
+                         <li><a href="{% url 'home' %}"> <span> Register / Login</span></a></li>
+
+                        {% endif %}
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- Header End -->
+
+    <!-- Breadcrumb Section Begin -->
+
+    <section class="breadcrumb-section set-bg spad" data-setbg="{% static 'home/img/seatbg.jpg' %}" style="background-size:100% 100%;">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <div class="breadcrumb-text">
+                        <h3>Seat Selection</h3>
+                        <div class="bt-option">
+                            <a href="./home.html">Home</a>
+                            <span>Seating</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Breadcrumb Section End -->
+
+    <!-- Contact Section Begin -->
+    <section class="contact-section spad">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="book">
+                        <div class="left">
+                            <img class="mb-3" src="{{theatre.TheatreImage.url}}" width="100%" height="300px">
+                            <div class="vg-text mb-3">
+                                <h4 style="color:white;"><b>{{theatre.TheatreName}}</b></h4>
+                                <p>{{theatre.TheatreAddress}}</p>
+                                <p>0{{theatre.Contact}}</p>
+                                <p>{{theatre.Email}}</p>
+                            </div>
+                        </div>
+                        <div class="right">
+                            <img src="{{movie.Poster1.url}}" class="mb-3" width="100%" height="200px" style="border-radius:20px;"><h5 style="color:white;">{{movie.MovieName}}</h5>
+                            <div id="upcomingDates" class="date-container">
+                                <input type="hidden" id="numOfDays" value="6"  style="margin-bottom:100px;">
+        <!-- Dates will be displayed here -->
+    </div>
+                            <select id="show-time" name="selected_time" onchange="updateTime(this.value)" style="border-radius:10px;width:215px; height:40px;background:transparent;color:white;border:solid 1px gray;margin-top:-80px;"
+                                    class="mb-3">
+
+                                <option style="color:black;">Choose Time</option>
+                                {% for show in shows %}
+                                <option style="color:black;">{{show.Show1}}</option>
+                                <option style="color:black;">{{show.Show2}}</option>
+                                <option style="color:black;">{{show.Show3}}</option>
+                                <option style="color:black;">{{show.Show4}}</option>
+                                <option style="color:black;">{{show.Show5}}</option>
+                                {% endfor %}
+                            </select>
+                            <div>
+                <h3>{{theatre.TheatreName}} seating</h3>
+
+
+                {% if ticket_price %}
+            <p>Ticket Price: {{ ticket_price }}</p>
+        {% else %}
+            <p>Ticket Price: Not available</p>
+        {% endif %}
+                <div class="seat-container">
+
+
+
+                        {% with show_index=forloop.counter0 %}
+                    {% with show=shows|first %}
+                    <div style="display:block;">
+                    <ul style="display:flex;list-style-type:none;padding:0;">
+
+                            <span style="color:white;font-size:18px;margin-right:20px;">J</span>
+                    <li><div class="fas fa-couch seat-icon" id="qty" data-price="{{ show.price }}" data-id="{{ seat.id }}" seat-name="J1"></div>   </li>
+                        <li><div class="fas fa-couch seat-icon" id="qty" data-price="{{ show.price }}" data-id="{{ seat.id }}" seat-name="J2"></div></li>
+                        <li>  <div class="fas fa-couch seat-icon" id="qty" data-price="{{ show.price }}" data-id="{{ seat.id }}" seat-name="J3"></div></li>
+                        <li>  <div class="fas fa-couch seat-icon" id="qty" data-price="{{ show.price }}" data-id="{{ seat.id }}" seat-name="J4"></div></li>
+                        <li class="seat-space"> <div class="fas fa-couch seat-icon" id="qty" data-price="{{ show.price }}" data-id="{{ seat.id }}" seat-name="J5"></div></li>
+                        <li> <div class="fas fa-couch seat-icon" id="qty" data-price="{{ show.price }}" data-id="{{ seat.id }}" seat-name="J6"></div></li>
+                        <li > <div class="fas fa-couch seat-icon" id="qty" data-price="{{ show.price }}" data-id="{{ seat.id }}" seat-name="J7"></div></li>
+                        <li> <div class="fas fa-couch seat-icon" id="qty" data-price="{{ show.price }}" data-id="{{ seat.id }}" seat-name="J8"></div></li>
+                        <li>  <div class="fas fa-couch seat-icon" id="qty" data-price="{{ show.price }}" data-id="{{ seat.id }}" seat-name="J9"></div></li>
+                        <li>   <div class="fas fa-couch seat-icon" id="qty" data-price="{{ show.price }}" data-id="{{ seat.id }}" seat-name="J10"></div></li>
+                        <li>   <div class="fas fa-couch seat-icon" id="qty" data-price="{{ show.price }}" data-id="{{ seat.id }}" seat-name="J11"></div></li>
+                        <li class="seat-space">  <div class="fas fa-couch seat-icon" id="qty" data-price="{{ show.price }}" data-id="{{ seat.id }}" seat-name="J12"></div></li>
+                        <li >   <div class="fas fa-couch seat-icon" id="qty" data-price="{{ show.price }}" data-id="{{ seat.id }}" seat-name="J13"></div></li>
+                        <li>   <div class="fas fa-couch seat-icon" id="qty" data-price="{{ show.price }}" data-id="{{ seat.id }}" seat-name="J14"></div></li>
+                        <li>   <div class="fas fa-couch seat-icon" id="qty" data-price="{{ show.price }}" data-id="{{ seat.id }}" seat-name="J15"></div></li>
+                        <li>  <div class="fas fa-couch seat-icon" id="qty" data-price="{{ show.price }}" data-id="{{ seat.id }}" seat-name="J16"></div></li>
+                        <li>   <div class="fas fa-couch seat-icon" id="qty" data-price="{{ show.price }}" data-id="{{ seat.id }}" seat-name="J17"></div></li>
+                         <span style="color:white;font-size:18px;margin-left:20px;">J</span>
+
+                        </ul>
+                    </div>
+                    <div style="display:block;">
+                    <ul style="display:flex;list-style-type:none;padding:0;">
+
+                            <span style="color:white;font-size:18px;margin-right:25px;">I</span>
+                    <li><div class="fas fa-couch seat-icon" id="qty" data-price="{{ show.price }}" data-id="{{ seat.id }}" seat-name="I1"></div>   </li>
+                        <li><div class="fas fa-couch seat-icon" id="qty" data-price="{{ show.price }}" data-id="{{ seat.id }}" seat-name="I2"></div></li>
+                        <li>  <div class="fas fa-couch seat-icon" id="qty" data-price="{{ show.price }}" data-id="{{ seat.id }}" seat-name="I3"></div></li>
+                        <li>  <div class="fas fa-couch seat-icon" id="qty" data-price="{{ show.price }}" data-id="{{ seat.id }}" seat-name="I4"></div></li>
+                        <li class="seat-space"> <div class="fas fa-couch seat-icon" id="qty" data-price="{{ show.price }}" data-id="{{ seat.id }}" seat-name="I5"></div></li>
+                        <li> <div class="fas fa-couch seat-icon" id="qty" data-price="{{ show.price }}" data-id="{{ seat.id }}" seat-name="I6"></div></li>
+                        <li> <div class="fas fa-couch seat-icon" id="qty" data-price="{{ show.price }}" data-id="{{ seat.id }}" seat-name="I7"></div></li>
+                        <li> <div class="fas fa-couch seat-icon" id="qty" data-price="{{ show.price }}" data-id="{{ seat.id }}" seat-name="I8"></div></li>
+                        <li>  <div class="fas fa-couch seat-icon" id="qty" data-price="{{ show.price }}" data-id="{{ seat.id }}" seat-name="I9"></div></li>
+                        <li>   <div class="fas fa-couch seat-icon" id="qty" data-price="{{ show.price }}" data-id="{{ seat.id }}" seat-name="I10"></div></li>
+                        <li>   <div class="fas fa-couch seat-icon" id="qty" data-price="{{ show.price }}" data-id="{{ seat.id }}" seat-name="I11"></div></li>
+                        <li class="seat-space">  <div class="fas fa-couch seat-icon" id="qty" data-price="{{ show.price }}" data-id="{{ seat.id }}" seat-name="I12"></div></li>
+                        <li>   <div class="fas fa-couch seat-icon" id="qty" data-price="{{ show.price }}" data-id="{{ seat.id }}" seat-name="I13"></div></li>
+                        <li>   <div class="fas fa-couch seat-icon" id="qty" data-price="{{ show.price }}" data-id="{{ seat.id }}" seat-name="I14"></div></li>
+                        <li>   <div class="fas fa-couch seat-icon" id="qty" data-price="{{ show.price }}" data-id="{{ seat.id }}" seat-name="I15"></div></li>
+                        <li>  <div class="fas fa-couch seat-icon" id="qty" data-price="{{ show.price }}" data-id="{{ seat.id }}" seat-name="I16"></div></li>
+                        <li>   <div class="fas fa-couch seat-icon" id="qty" data-price="{{ show.price }}" data-id="{{ seat.id }}" seat-name="I17"></div></li>
+                         <span style="color:white;font-size:18px;margin-left:20px;">I</span>
+
+                        </ul>
+                    </div>
+                    <div style="display:block;" class="seat-bottom">
+                    <ul style="display:flex;list-style-type:none;padding:0;">
+
+                            <span style="color:white;font-size:18px;margin-right:20px;">H</span>
+                    <li><div class="fas fa-couch seat-icon" id="qty" data-price="{{ show.price }}" data-id="{{ seat.id }}" seat-name="H1"></div>   </li>
+                        <li><div class="fas fa-couch seat-icon" id="qty" data-price="{{ show.price }}" data-id="{{ seat.id }}" seat-name="H2"></div></li>
+                        <li>  <div class="fas fa-couch seat-icon" id="qty" data-price="{{ show.price }}" data-id="{{ seat.id }}" seat-name="H3"></div></li>
+                        <li>  <div class="fas fa-couch seat-icon" id="qty" data-price="{{ show.price }}" data-id="{{ seat.id }}" seat-name="H4"></div></li>
+                        <li class="seat-space"> <div class="fas fa-couch seat-icon" id="qty" data-price="{{ show.price }}" data-id="{{ seat.id }}" seat-name="H5"></div></li>
+                        <li> <div class="fas fa-couch seat-icon" id="qty" data-price="{{ show.price }}" data-id="{{ seat.id }}" seat-name="H6"></div></li>
+                        <li> <div class="fas fa-couch seat-icon" id="qty" data-price="{{ show.price }}" data-id="{{ seat.id }}" seat-name="H7"></div></li>
+                        <li> <div class="fas fa-couch seat-icon" id="qty" data-price="{{ show.price }}" data-id="{{ seat.id }}" seat-name="H8"></div></li>
+                        <li>  <div class="fas fa-couch seat-icon" id="qty" data-price="{{ show.price }}" data-id="{{ seat.id }}" seat-name="H9"></div></li>
+                        <li>   <div class="fas fa-couch seat-icon" id="qty" data-price="{{ show.price }}" data-id="{{ seat.id }}" seat-name="H10"></div></li>
+                        <li>   <div class="fas fa-couch seat-icon" id="qty" data-price="{{ show.price }}" data-id="{{ seat.id }}" seat-name="H11"></div></li>
+                        <li class="seat-space">  <div class="fas fa-couch seat-icon" id="qty" data-price="{{ show.price }}" data-id="{{ seat.id }}" seat-name="H12"></div></li>
+                        <li>   <div class="fas fa-couch seat-icon" id="qty" data-price="{{ show.price }}" data-id="{{ seat.id }}" seat-name="H13"></div></li>
+                        <li>   <div class="fas fa-couch seat-icon" id="qty" data-price="{{ show.price }}" data-id="{{ seat.id }}" seat-name="H14"></div></li>
+                        <li>   <div class="fas fa-couch seat-icon" id="qty" data-price="{{ show.price }}" data-id="{{ seat.id }}" seat-name="H15"></div></li>
+                        <li>  <div class="fas fa-couch seat-icon" id="qty" data-price="{{ show.price }}" data-id="{{ seat.id }}" seat-name="H16"></div></li>
+                        <li>   <div class="fas fa-couch seat-icon" id="qty" data-price="{{ show.price }}" data-id="{{ seat.id }}" seat-name="H17"></div></li>
+                         <span style="color:white;font-size:18px;margin-left:20px;">H</span>
+
+                        </ul>
+                    </div>
+                    <div style="display:block;" >
+                    <ul style="display:flex;list-style-type:none;padding:0;">
+
+                            <span style="color:white;font-size:18px;margin-right:20px;">G</span>
+                    <li><div class="fas fa-couch seat-icon" id="qty" data-price="{{ show.price }}" data-id="{{ seat.id }}" seat-name="G1"></div>   </li>
+                        <li><div class="fas fa-couch seat-icon" id="qty" data-price="{{ show.price }}" data-id="{{ seat.id }}" seat-name="G2"></div></li>
+                        <li>  <div class="fas fa-couch seat-icon" id="qty" data-price="{{ show.price }}" data-id="{{ seat.id }}" seat-name="G3"></div></li>
+                        <li>  <div class="fas fa-couch seat-icon" id="qty" data-price="{{ show.price }}" data-id="{{ seat.id }}" seat-name="G4"></div></li>
+                        <li class="seat-space"> <div class="fas fa-couch seat-icon" id="qty" data-price="{{ show.price }}" data-id="{{ seat.id }}" seat-name="G5"></div></li>
+                        <li> <div class="fas fa-couch seat-icon" id="qty" data-price="{{ show.price }}" data-id="{{ seat.id }}" seat-name="G6"></div></li>
+                        <li> <div class="fas fa-couch seat-icon" id="qty" data-price="{{ show.price }}" data-id="{{ seat.id }}" seat-name="G7"></div></li>
+                        <li> <div class="fas fa-couch seat-icon" id="qty" data-price="{{ show.price }}" data-id="{{ seat.id }}" seat-name="G8"></div></li>
+                        <li>  <div class="fas fa-couch seat-icon" id="qty" data-price="{{ show.price }}" data-id="{{ seat.id }}" seat-name="G9"></div></li>
+                        <li>   <div class="fas fa-couch seat-icon" id="qty" data-price="{{ show.price }}" data-id="{{ seat.id }}" seat-name="G10"></div></li>
+                        <li>   <div class="fas fa-couch seat-icon" id="qty" data-price="{{ show.price }}" data-id="{{ seat.id }}" seat-name="G11"></div></li>
+                        <li class="seat-space">  <div class="fas fa-couch seat-icon" id="qty" data-price="{{ show.price }}" data-id="{{ seat.id }}" seat-name="G12"></div></li>
+                        <li>   <div class="fas fa-couch seat-icon" id="qty" data-price="{{ show.price }}" data-id="{{ seat.id }}" seat-name="G13"></div></li>
+                        <li>   <div class="fas fa-couch seat-icon" id="qty" data-price="{{ show.price }}" data-id="{{ seat.id }}" seat-name="G14"></div></li>
+                        <li>   <div class="fas fa-couch seat-icon" id="qty" data-price="{{ show.price }}" data-id="{{ seat.id }}" seat-name="G15"></div></li>
+                        <li>  <div class="fas fa-couch seat-icon" id="qty" data-price="{{ show.price }}" data-id="{{ seat.id }}" seat-name="G16"></div></li>
+                        <li>   <div class="fas fa-couch seat-icon" id="qty" data-price="{{ show.price }}" data-id="{{ seat.id }}" seat-name="G17"></div></li>
+                         <span style="color:white;font-size:18px;margin-left:20px;">G</span>
+
+                        </ul>
+                    </div>
+                    <div style="display:block;">
+                    <ul style="display:flex;list-style-type:none;padding:0;">
+
+                            <span style="color:white;font-size:18px;margin-right:20px;">F</span>
+                    <li><div class="fas fa-couch seat-icon" id="qty" data-price="{{ show.price }}" data-id="{{ seat.id }}" seat-name="F1"></div>   </li>
+                        <li><div class="fas fa-couch seat-icon" id="qty" data-price="{{ show.price }}" data-id="{{ seat.id }}" seat-name="F2"></div></li>
+                        <li>  <div class="fas fa-couch seat-icon" id="qty" data-price="{{ show.price }}" data-id="{{ seat.id }}" seat-name="F3"></div></li>
+                        <li>  <div class="fas fa-couch seat-icon" id="qty" data-price="{{ show.price }}" data-id="{{ seat.id }}" seat-name="F4"></div></li>
+                        <li class="seat-space"> <div class="fas fa-couch seat-icon" id="qty" data-price="{{ show.price }}" data-id="{{ seat.id }}" seat-name="F5"></div></li>
+                        <li> <div class="fas fa-couch seat-icon" id="qty" data-price="{{ show.price }}" data-id="{{ seat.id }}" seat-name="F6"></div></li>
+                        <li> <div class="fas fa-couch seat-icon" id="qty" data-price="{{ show.price }}" data-id="{{ seat.id }}" seat-name="F7"></div></li>
+                        <li> <div class="fas fa-couch seat-icon" id="qty" data-price="{{ show.price }}" data-id="{{ seat.id }}" seat-name="F8"></div></li>
+                        <li>  <div class="fas fa-couch seat-icon" id="qty" data-price="{{ show.price }}" data-id="{{ seat.id }}" seat-name="F9"></div></li>
+                        <li>   <div class="fas fa-couch seat-icon" id="qty" data-price="{{ show.price }}" data-id="{{ seat.id }}" seat-name="F10"></div></li>
+                        <li>   <div class="fas fa-couch seat-icon" id="qty" data-price="{{ show.price }}" data-id="{{ seat.id }}" seat-name="F11"></div></li>
+                        <li class="seat-space">  <div class="fas fa-couch seat-icon" id="qty" data-price="{{ show.price }}" data-id="{{ seat.id }}" seat-name="F12"></div></li>
+                        <li>   <div class="fas fa-couch seat-icon" id="qty" data-price="{{ show.price }}" data-id="{{ seat.id }}" seat-name="F13"></div></li>
+                        <li>   <div class="fas fa-couch seat-icon" id="qty" data-price="{{ show.price }}" data-id="{{ seat.id }}" seat-name="F14"></div></li>
+                        <li>   <div class="fas fa-couch seat-icon" id="qty" data-price="{{ show.price }}" data-id="{{ seat.id }}" seat-name="F15"></div></li>
+                        <li>  <div class="fas fa-couch seat-icon" id="qty" data-price="{{ show.price }}" data-id="{{ seat.id }}" seat-name="F16"></div></li>
+                        <li>   <div class="fas fa-couch seat-icon" id="qty" data-price="{{ show.price }}" data-id="{{ seat.id }}" seat-name="F17"></div></li>
+                         <span style="color:white;font-size:18px;margin-left:20px;">F</span>
+
+                        </ul>
+                    </div>
+                    <div style="display:block;">
+                    <ul style="display:flex;list-style-type:none;padding:0;">
+
+                            <span style="color:white;font-size:18px;margin-right:20px;">E</span>
+                    <li><div class="fas fa-couch seat-icon" id="qty" data-price="{{ show.price }}" data-id="{{ seat.id }}" seat-name="E1"></div>   </li>
+                        <li><div class="fas fa-couch seat-icon" id="qty" data-price="{{ show.price }}" data-id="{{ seat.id }}" seat-name="E2"></div></li>
+                        <li>  <div class="fas fa-couch seat-icon" id="qty" data-price="{{ show.price }}" data-id="{{ seat.id }}" seat-name="E3"></div></li>
+                        <li>  <div class="fas fa-couch seat-icon" id="qty" data-price="{{ show.price }}" data-id="{{ seat.id }}" seat-name="E4"></div></li>
+                        <li class="seat-space"> <div class="fas fa-couch seat-icon" id="qty" data-price="{{ show.price }}" data-id="{{ seat.id }}" seat-name="E5"></div></li>
+                        <li> <div class="fas fa-couch seat-icon" id="qty" data-price="{{ show.price }}" data-id="{{ seat.id }}" seat-name="E6"></div></li>
+                        <li> <div class="fas fa-couch seat-icon" id="qty" data-price="{{ show.price }}" data-id="{{ seat.id }}" seat-name="E7"></div></li>
+                        <li> <div class="fas fa-couch seat-icon" id="qty" data-price="{{ show.price }}" data-id="{{ seat.id }}" seat-name="E8"></div></li>
+                        <li>  <div class="fas fa-couch seat-icon" id="qty" data-price="{{ show.price }}" data-id="{{ seat.id }}" seat-name="E9"></div></li>
+                        <li>   <div class="fas fa-couch seat-icon" id="qty" data-price="{{ show.price }}" data-id="{{ seat.id }}" seat-name="E10"></div></li>
+                        <li>   <div class="fas fa-couch seat-icon" id="qty" data-price="{{ show.price }}" data-id="{{ seat.id }}" seat-name="E11"></div></li>
+                        <li class="seat-space">  <div class="fas fa-couch seat-icon" id="qty" data-price="{{ show.price }}" data-id="{{ seat.id }}" seat-name="E12"></div></li>
+                        <li>   <div class="fas fa-couch seat-icon" id="qty" data-price="{{ show.price }}" data-id="{{ seat.id }}" seat-name="E13"></div></li>
+                        <li>   <div class="fas fa-couch seat-icon" id="qty" data-price="{{ show.price }}" data-id="{{ seat.id }}" seat-name="E14"></div></li>
+                        <li>   <div class="fas fa-couch seat-icon" id="qty" data-price="{{ show.price }}" data-id="{{ seat.id }}" seat-name="E15"></div></li>
+                        <li>  <div class="fas fa-couch seat-icon" id="qty" data-price="{{ show.price }}" data-id="{{ seat.id }}" seat-name="E16"></div></li>
+                        <li>   <div class="fas fa-couch seat-icon" id="qty" data-price="{{ show.price }}" data-id="{{ seat.id }}" seat-name="E17"></div></li>
+                         <span style="color:white;font-size:18px;margin-left:20px;">E</span>
+
+                        </ul>
+                    </div>
+                    <div style="display:block;">
+                    <ul style="display:flex;list-style-type:none;padding:0;">
+
+                            <span style="color:white;font-size:18px;margin-right:20px;">D</span>
+                    <li><div class="fas fa-couch seat-icon" id="qty" data-price="{{ show.price }}" data-id="{{ seat.id }}" seat-name="D1"></div>   </li>
+                        <li><div class="fas fa-couch seat-icon" id="qty" data-price="{{ show.price }}" data-id="{{ seat.id }}" seat-name="D2"></div></li>
+                        <li>  <div class="fas fa-couch seat-icon" id="qty" data-price="{{ show.price }}" data-id="{{ seat.id }}" seat-name="D3"></div></li>
+                        <li>  <div class="fas fa-couch seat-icon" id="qty" data-price="{{ show.price }}" data-id="{{ seat.id }}" seat-name="D4"></div></li>
+                        <li class="seat-space"> <div class="fas fa-couch seat-icon" id="qty" data-price="{{ show.price }}" data-id="{{ seat.id }}" seat-name="D5"></div></li>
+                        <li> <div class="fas fa-couch seat-icon" id="qty" data-price="{{ show.price }}" data-id="{{ seat.id }}" seat-name="D6"></div></li>
+                        <li> <div class="fas fa-couch seat-icon" id="qty" data-price="{{ show.price }}" data-id="{{ seat.id }}" seat-name="D7"></div></li>
+                        <li> <div class="fas fa-couch seat-icon" id="qty" data-price="{{ show.price }}" data-id="{{ seat.id }}" seat-name="D8"></div></li>
+                        <li>  <div class="fas fa-couch seat-icon" id="qty" data-price="{{ show.price }}" data-id="{{ seat.id }}" seat-name="D9"></div></li>
+                        <li>   <div class="fas fa-couch seat-icon" id="qty" data-price="{{ show.price }}" data-id="{{ seat.id }}" seat-name="D10"></div></li>
+                        <li>   <div class="fas fa-couch seat-icon" id="qty" data-price="{{ show.price }}" data-id="{{ seat.id }}" seat-name="D11"></div></li>
+                        <li class="seat-space">  <div class="fas fa-couch seat-icon" id="qty" data-price="{{ show.price }}" data-id="{{ seat.id }}" seat-name="D12"></div></li>
+                        <li>   <div class="fas fa-couch seat-icon" id="qty" data-price="{{ show.price }}" data-id="{{ seat.id }}" seat-name="D13"></div></li>
+                        <li>   <div class="fas fa-couch seat-icon" id="qty" data-price="{{ show.price }}" data-id="{{ seat.id }}" seat-name="D14"></div></li>
+                        <li>   <div class="fas fa-couch seat-icon" id="qty" data-price="{{ show.price }}" data-id="{{ seat.id }}" seat-name="D15"></div></li>
+                        <li>  <div class="fas fa-couch seat-icon" id="qty" data-price="{{ show.price }}" data-id="{{ seat.id }}" seat-name="D16"></div></li>
+                        <li>   <div class="fas fa-couch seat-icon" id="qty" data-price="{{ show.price }}" data-id="{{ seat.id }}" seat-name="D17"></div></li>
+                         <span style="color:white;font-size:18px;margin-left:20px;">D</span>
+
+                        </ul>
+                    </div>
+                    <div style="display:block;" class="seat-bottom">
+                    <ul style="display:flex;list-style-type:none;padding:0;">
+
+                            <span style="color:white;font-size:18px;margin-right:20px;">C</span>
+                    <li><div class="fas fa-couch seat-icon" id="qty" data-price="{{ show.price }}" data-id="{{ seat.id }}" seat-name="C1"></div>   </li>
+                        <li><div class="fas fa-couch seat-icon" id="qty" data-price="{{ show.price }}" data-id="{{ seat.id }}" seat-name="C2"></div></li>
+                        <li>  <div class="fas fa-couch seat-icon" id="qty" data-price="{{ show.price }}" data-id="{{ seat.id }}" seat-name="C3"></div></li>
+                        <li>  <div class="fas fa-couch seat-icon" id="qty" data-price="{{ show.price }}" data-id="{{ seat.id }}" seat-name="C4"></div></li>
+                        <li class="seat-space"> <div class="fas fa-couch seat-icon" id="qty" data-price="{{ show.price }}" data-id="{{ seat.id }}" seat-name="C5"></div></li>
+                        <li> <div class="fas fa-couch seat-icon" id="qty" data-price="{{ show.price }}" data-id="{{ seat.id }}" seat-name="C6"></div></li>
+                        <li> <div class="fas fa-couch seat-icon" id="qty" data-price="{{ show.price }}" data-id="{{ seat.id }}" seat-name="C7"></div></li>
+                        <li> <div class="fas fa-couch seat-icon" id="qty" data-price="{{ show.price }}" data-id="{{ seat.id }}" seat-name="C8"></div></li>
+                        <li>  <div class="fas fa-couch seat-icon" id="qty" data-price="{{ show.price }}" data-id="{{ seat.id }}" seat-name="C9"></div></li>
+                        <li>   <div class="fas fa-couch seat-icon" id="qty" data-price="{{ show.price }}" data-id="{{ seat.id }}" seat-name="C10"></div></li>
+                        <li>   <div class="fas fa-couch seat-icon" id="qty" data-price="{{ show.price }}" data-id="{{ seat.id }}" seat-name="C11"></div></li>
+                        <li class="seat-space">  <div class="fas fa-couch seat-icon" id="qty" data-price="{{ show.price }}" data-id="{{ seat.id }}" seat-name="C12"></div></li>
+                        <li>   <div class="fas fa-couch seat-icon" id="qty" data-price="{{ show.price }}" data-id="{{ seat.id }}" seat-name="C13"></div></li>
+                        <li>   <div class="fas fa-couch seat-icon" id="qty" data-price="{{ show.price }}" data-id="{{ seat.id }}" seat-name="C14"></div></li>
+                        <li>   <div class="fas fa-couch seat-icon" id="qty" data-price="{{ show.price }}" data-id="{{ seat.id }}" seat-name="C15"></div></li>
+                        <li>  <div class="fas fa-couch seat-icon" id="qty" data-price="{{ show.price }}" data-id="{{ seat.id }}" seat-name="C16"></div></li>
+                        <li>   <div class="fas fa-couch seat-icon" id="qty" data-price="{{ show.price }}" data-id="{{ seat.id }}" seat-name="C17"></div></li>
+                         <span style="color:white;font-size:18px;margin-left:20px;">C</span>
+
+                        </ul>
+                    </div>
+                    <div style="display:block;">
+                    <ul style="display:flex;list-style-type:none;padding:0;">
+
+                            <span style="color:white;font-size:18px;margin-right:20px;">B</span>
+                    <li><div class="fas fa-couch seat-icon" id="qty" data-price="{{ show.price }}" data-id="{{ seat.id }}" seat-name="B1"></div>   </li>
+                        <li><div class="fas fa-couch seat-icon" id="qty" data-price="{{ show.price }}" data-id="{{ seat.id }}" seat-name="B2"></div></li>
+                        <li>  <div class="fas fa-couch seat-icon" id="qty" data-price="{{ show.price }}" data-id="{{ seat.id }}" seat-name="B3"></div></li>
+                        <li>  <div class="fas fa-couch seat-icon" id="qty" data-price="{{ show.price }}" data-id="{{ seat.id }}" seat-name="B4"></div></li>
+                        <li class="seat-space"> <div class="fas fa-couch seat-icon" id="qty" data-price="{{ show.price }}" data-id="{{ seat.id }}" seat-name="B5"></div></li>
+                        <li> <div class="fas fa-couch seat-icon" id="qty" data-price="{{ show.price }}" data-id="{{ seat.id }}" seat-name="B6"></div></li>
+                        <li> <div class="fas fa-couch seat-icon" id="qty" data-price="{{ show.price }}" data-id="{{ seat.id }}" seat-name="B7"></div></li>
+                        <li> <div class="fas fa-couch seat-icon" id="qty" data-price="{{ show.price }}" data-id="{{ seat.id }}" seat-name="B8"></div></li>
+                        <li>  <div class="fas fa-couch seat-icon" id="qty" data-price="{{ show.price }}" data-id="{{ seat.id }}" seat-name="B9"></div></li>
+                        <li>   <div class="fas fa-couch seat-icon" id="qty" data-price="{{ show.price }}" data-id="{{ seat.id }}" seat-name="B10"></div></li>
+                        <li>   <div class="fas fa-couch seat-icon" id="qty" data-price="{{ show.price }}" data-id="{{ seat.id }}" seat-name="B11"></div></li>
+                        <li class="seat-space">  <div class="fas fa-couch seat-icon" id="qty" data-price="{{ show.price }}" data-id="{{ seat.id }}" seat-name="B12"></div></li>
+                        <li>   <div class="fas fa-couch seat-icon" id="qty" data-price="{{ show.price }}" data-id="{{ seat.id }}" seat-name="B13"></div></li>
+                        <li>   <div class="fas fa-couch seat-icon" id="qty" data-price="{{ show.price }}" data-id="{{ seat.id }}" seat-name="B14"></div></li>
+                        <li>   <div class="fas fa-couch seat-icon" id="qty" data-price="{{ show.price }}" data-id="{{ seat.id }}" seat-name="B15"></div></li>
+                        <li>  <div class="fas fa-couch seat-icon" id="qty" data-price="{{ show.price }}" data-id="{{ seat.id }}" seat-name="B16"></div></li>
+                        <li>   <div class="fas fa-couch seat-icon" id="qty" data-price="{{ show.price }}" data-id="{{ seat.id }}" seat-name="B17"></div></li>
+                         <span style="color:white;font-size:18px;margin-left:20px;">B</span>
+
+                        </ul>
+                    </div>
+                    <div style="display:block;">
+                    <ul style="display:flex;list-style-type:none;padding:0;">
+
+                            <span style="color:white;font-size:18px;margin-right:20px;">A</span>
+                    <li><div class="fas fa-couch seat-icon" id="qty" data-price="{{ show.price }}" data-id="{{ seat.id }}" seat-name="A1"></div>   </li>
+                        <li><div class="fas fa-couch seat-icon" id="qty" data-price="{{ show.price }}" data-id="{{ seat.id }}" seat-name="A2"></div></li>
+                        <li>  <div class="fas fa-couch seat-icon " id="qty" data-price="{{ show.price }}" data-id="{{ seat.id }}" seat-name="A3"></div></li>
+                        <li>  <div class="fas fa-couch seat-icon" id="qty" data-price="{{ show.price }}" data-id="{{ seat.id }}" seat-name="A4"></div></li>
+                        <li class="seat-space"> <div class="fas fa-couch seat-icon" id="qty" data-price="{{ show.price }}" data-id="{{ seat.id }}" seat-name="A5"></div></li>
+                        <li> <div class="fas fa-couch seat-icon" id="qty" data-price="{{ show.price }}" data-id="{{ seat.id }}" seat-name="A6"></div></li>
+                        <li> <div class="fas fa-couch seat-icon" id="qty" data-price="{{ show.price }}" data-id="{{ seat.id }}" seat-name="A7"></div></li>
+                        <li> <div class="fas fa-couch seat-icon" id="qty" data-price="{{ show.price }}" data-id="{{ seat.id }}" seat-name="A8"></div></li>
+                        <li>  <div class="fas fa-couch seat-icon" id="qty" data-price="{{ show.price }}" data-id="{{ seat.id }}" seat-name="A9"></div></li>
+                        <li>   <div class="fas fa-couch seat-icon" id="qty" data-price="{{ show.price }}" data-id="{{ seat.id }}" seat-name="A10"></div></li>
+                        <li>   <div class="fas fa-couch seat-icon" id="qty" data-price="{{ show.price }}" data-id="{{ seat.id }}" seat-name="A11"></div></li>
+                        <li class="seat-space">  <div class="fas fa-couch seat-icon" id="qty" data-price="{{ show.price }}" data-id="{{ seat.id }}" seat-name="A12"></div></li>
+                        <li>   <div class="fas fa-couch seat-icon" id="qty" data-price="{{ show.price }}" data-id="{{ seat.id }}" seat-name="A13"></div></li>
+                        <li>   <div class="fas fa-couch seat-icon" id="qty" data-price="{{ show.price }}" data-id="{{ seat.id }}" seat-name="A14"></div></li>
+                        <li>   <div class="fas fa-couch seat-icon" id="qty" data-price="{{ show.price }}" data-id="{{ seat.id }}" seat-name="A15"></div></li>
+                        <li>  <div class="fas fa-couch seat-icon" id="qty" data-price="{{ show.price }}" data-id="{{ seat.id }}" seat-name="A16"></div></li>
+                        <li>   <div class="fas fa-couch seat-icon" id="qty" data-price="{{ show.price }}" data-id="{{ seat.id }}" seat-name="A17"></div></li>
+                         <span style="color:white;font-size:18px;margin-left:20px;">A</span>
+
+                        </ul>
+                    </div>
+                            {% endwith %}
+                         {% endwith %}
+                    <h6 style="color:white;letter-spacing:5px;margin-left:300px;margin-bottom:0px;text-align:center;">screen</h6>
+                    <div class="screen">
+
+                    </div>
+
+<!--                {% for seat in seat_range %}-->
+<!--                    {% with show_index=forloop.counter0 %}-->
+<!--                    {% with show=shows|first %}-->
+<!--                <i class="fas fa-couch seat-icon"  data-price="{{ show.price }}" data-id="{{ seat.id }}"></i>-->
+<!--                        {% endwith %}-->
+<!--                    {% if forloop.counter|divisibleby:20 %}-->
+<!--                </div><div class="seat-container">-->
+
+<!--                {% endif %}-->
+<!--                                {% endwith %}-->
+<!--                {% endfor %}-->
+                </div>
+                                <div class="form-group">
+                <input type="text" style="margin-top:40px;" class="form-control" placeholder="Total" name="totalprice" id="total" readonly>
+              </div>
+         <div>
+                                        <form method="post" action="{% url 'save_slot' %}">
+                                            {% csrf_token %}
+
+                                        <input type="hidden" name="theatre_name" value="{{ theatre.TheatreName }}" readonly>
+                                        <input type="hidden" name="theatre_address" value="{{ theatre.TheatreAddress }}" readonly>
+                                        <input type="hidden" name="movie_name" value="{{ movie.MovieName }}" readonly >
+                                         <input type="hidden"  placeholder="Total" name="total_price" id="totalPrice" readonly >
+                                        <input type="hidden"  placeholder="date" name="selected_date" id="selectedDate" readonly >
+                                        <input type="hidden"  placeholder="date" name="selected_time" id="selectedTime" readonly >
+                                         <input type="text"  name="seatselected" id="selected-seat" placeholder="seat number" class="mb-3 form-control" readonly><br>
+                                        <button type="submit" style="border-radius:10px; width:300px; height:50px; background:red; color:white;margin-left:220px;" class="mb-2">PROCEED TO CHECKOUT</button>
+                                    </form>
+                                </div>
+
+            </div>
+        </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+    </section>
+
+
+
+
+
+    <!-- Contact Section End -->
+
+    <!-- Footer Section Begin -->
+    <footer class="footer-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="footer-about">
+                        <div class="fa-logo">
+                            <a href="#"><img src="{% static 'home/img/f-logo.png' %}" alt=""></a>
+                        </div>
+                        <p>Providing user friendly interface for booking movie tickets.</p>
+                        <div class="fa-social">
+                            <a href="#"><i class="fa fa-facebook" style="margin-top:15px;"></i></a>
+                            <a href="#"><i class="fa fa-twitter" style="margin-top:15px;"></i></a>
+                            <a href="#"><i class="fa fa-youtube-play" style="margin-top:15px;"></i></a>
+                            <a href="#"><i class="fa fa-instagram" style="margin-top:15px;"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-12">
+                    <div class="editor-choice">
+                        <div class="section-title">
+                            <h5>Editor's Choice</h5>
+                        </div>
+                        <div class="ec-item">
+                            <div class="ec-pic">
+                                <img src="img/trending/editor-1.jpg" alt="">
+                            </div>
+                            <div class="ec-text">
+                                <h6><a href="#">A Monster Prom poster got hijacked for a Papa Roach concert...</a>
+                                </h6>
+                                <ul>
+                                    <li><i class="fa fa-clock-o"></i> Aug 01, 2019</li>
+                                    <li><i class="fa fa-comment-o"></i> 12</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="ec-item">
+                            <div class="ec-pic">
+                                <img src="img/trending/editor-2.jpg" alt="">
+                            </div>
+                            <div class="ec-text">
+                                <h6><a href="#">Facebook wants to read your thoughts with its augmented...</a>
+                                </h6>
+                                <ul>
+                                    <li><i class="fa fa-clock-o"></i> Aug 01, 2019</li>
+                                    <li><i class="fa fa-comment-o"></i> 12</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+<!--                <div class="col-lg-4 col-md-6">-->
+<!--                    <div class="tags-cloud">-->
+<!--                        <div class="section-title">-->
+<!--                            <h5>Tags Cloud</h5>-->
+<!--                        </div>-->
+<!--                        <div class="tag-list">-->
+<!--                            <a href="#"><span>Gaming</span></a>-->
+<!--                            <a href="#"><span>Platform</span></a>-->
+<!--                            <a href="#"><span>Playstation</span></a>-->
+<!--                            <a href="#"><span>Hardware</span></a>-->
+<!--                            <a href="#"><span>Reviews</span></a>-->
+<!--                            <a href="#"><span>Simulation</span></a>-->
+<!--                            <a href="#"><span>Strategy</span></a>-->
+<!--                            <a href="#"><span>Scientific</span></a>-->
+<!--                            <a href="#"><span>References</span></a>-->
+<!--                            <a href="#"><span>Role-playing</span></a>-->
+<!--                            <a href="#"><span>Adventurea</span></a>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+            </div>
+            <div class="copyright-area">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="ca-text"><p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+  Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved |
+  <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p></div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="ca-links">
+                            <a href="{% url 'about_page' %}">About</a>
+
+                            <a href="{% url 'contact_page' %}">Contact</a>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- Footer Section End -->
+
+
+
+    <!-- Search model Begin -->
+    <div class="search-model">
+        <div class="h-100 d-flex align-items-center justify-content-center">
+            <div class="search-close-switch">+</div>
+            <form class="search-model-form" method="get" action="{% url 'search_view' %}">
+                <input type="text" id="search-input" name="query" placeholder="Search here.....">
+            </form>
+        </div>
+    </div>
+    <!-- Search model end -->
+
+    <!-- Js Plugins -->
+
+
+ <style>
+     .book{
+        width:100%;
+        height:1300px;
+        border:1px solid #fff;
+        display:flex;
+
+     }
+     .left{
+        width:30%;
+        position:relative;
+        height:800px;
+
+        text-align:center;
+     }
+     .right{
+      width:90%;
+      position:relative;
+      height:200px;
+      border:1px solid red;
+      margin:20px 40px;
+      border-radius:20px;
+
+
+     }
+        /* Define CSS styles for seat icons */
+        .seat-container {
+            display: flex;
+            flex-wrap: wrap;
+            width:100%;
+            justify-content: space-between;
+            align-item: center;
+            /* Add margin between rows */
+        }
+        .row-name{
+            font-size:16px;
+            margin-right:10px;
+        }
+        .seat-icon{
+            font-size:21px;
+            transition: color 0.3s;
+            color:#808080;
+            margin-right:10px;
+            margin-bottom:20px;
+        }
+        .seat-icon:hover{
+            color:#ffd700;
+        }
+        .seat-space{
+            margin-right:30px;
+        }
+
+        .seat-bottom{
+            margin-bottom:30px;
+        }
+
+        .selected{
+            color:greenyellow;
+        }
+
+        .seat {
+            width: 20px; /* Adjust width and height as needed */
+            height: 20px;
+            margin: 5px; /* Adjust margin as needed */
+            background-color: #ccc; /* Adjust background color as needed */
+            border: 1px solid #999; /* Adjust border styles as needed */
+            text-align: center;
+            line-height: 20px; /* Adjust line height to center content vertically */
+        }
+     /* Style for the date container */
+        .date-container {
+            display: flex;
+            flex-wrap: wrap;
+            margin-left: 300px;
+
+        }
+
+        /* Style for individual date boxes */
+        .date-box {
+            width: 55px;
+            height: 60px;
+            border-radius: 20%;
+            margin: 5px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 30px;
+            text-align: center;
+            transition: background-color 0.3s; /* Add a smooth transition effect */
+            cursor: pointer; /* Add a pointer cursor on hover */
+            color:white;
+        }
+
+        /* Style for active date */
+        .active-date {
+            background-color: red;
+            color: white;
+        }
+
+        /* Hover effect for date boxes */
+        .date-box:hover {
+            background-color: red; /* Change the background color on hover */
+        }
+
+        /* Style for day and month */
+        .day {
+            font-size: 10px;
+            margin-bottom: 4px;
+        }
+
+        .month {
+            font-size: 12px;
+        }
+     .seat1 {
+            width: 50px;
+            height: 50px;
+            margin: 5px;
+            display: inline-block;
+            cursor: pointer;
+        }
+     .screen{
+        position: relative;
+        width:100%;
+        border-top:3px solid #fd6565;
+
+        border-radius:20%;
+        overflow:hidden;
+        box-shadow: inset 0px 10px 20px var(--color);
+        text-align:center;
+        padding-top:15px;
+        color:#fff;
+        letter-spacing:5px;
+        font-size:12px;
+        box-shadow: 0px 0px 20px rgb(184,184,184,.5)
+        top:-17px;
+     }
+    </style>
+
+
+<script>
+    document.querySelectorAll('.seat-icon').forEach(seat => {
+    seat.addEventListener('click', () => {
+        seat.classList.toggle('selected');
+        updateSelectedSeats();
+    });
+});
+    function updateSelectedSeats(){
+        const selectedSeats = document.querySelectorAll('.seat-icon.selected');
+        const selectedSeatsList = document.getElementById('selected-seats-list');
+
+
+        selectedSeats.forEach(seat => {
+            const seatId = seat.getAttribute('data-id');
+            const listItem = document.createElement('li');
+            listItem.textContent = 'Seat {seatId}';
+            selectedSeatsList.appendChild(listItem);
+        });
+        selectedSeatsList.innerHTML = ''; // Clear previous selections
+    }
+</script>
+
+
+
+
+    <script src="{% static 'home/js/jquery-3.3.1.min.js' %}"></script>
+    <script src="{% static 'home/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'home/js/jquery.magnific-popup.min.js' %}"></script>
+    <script src="{% static 'home/js/circle-progress.min.js' %}"></script>
+    <script src="{% static 'home/js/jquery.barfiller.js' %}"></script>
+    <script src="{% static 'home/js/jquery.slicknav.js' %}"></script>
+    <script src="{% static 'home/js/owl.carousel.min.js' %}"></script>
+    <script src="{% static 'home/js/main.js' %}"></script>
+
+
+
+
+<script>
+         const seatIcons = document.querySelectorAll('.seat-icon');
+    const totalPriceInput = document.getElementById('total');
+    let totalPrice = 0;
+
+
+
+    seatIcons.forEach(icon => {
+        icon.addEventListener('click', () => {
+
+            const price = parseFloat(icon.dataset.price);
+
+            if (icon.classList.contains('selected')) {
+                icon.classList.add('selected');
+                totalPrice += price;
+
+            } else {
+                icon.classList.remove('selected');
+                totalPrice -= price;
+            }
+
+            totalPriceInput.value = totalPrice;
+            document.getElementById('totalPrice').value = totalPrice;
+
+        });
+    });
+
+    // Update total price when show time is changed
+    document.getElementById('show-time').removeEventListener('change', (event) => {
+        totalPrice = parseFloat(event.target.value);
+        totalPriceInput.value = totalPrice;
+    });
+    </script>
+
+
+<script>
+    let selectedDate = null;
+
+    // Function to calculate the next N days including today, where N is retrieved from the backend
+    function getNextNDates(numOfDays) {
+        const today = new Date();
+        const dates = [];
+
+        for (let i = 0; i < numOfDays; i++) {
+            const date = new Date(today);
+            date.setDate(today.getDate() + i); // Include today
+            dates.push(date);
+        }
+
+        return dates;
+    }
+
+    // Function to update the div with upcoming dates
+    function updateUpcomingDates() {
+        const upcomingDatesDiv = document.getElementById('upcomingDates');
+        const numOfDays = parseInt(document.getElementById('numOfDays').value, 10); // Retrieve numOfDays from the hidden input field
+        const dates = getNextNDates(numOfDays);
+
+        // Clear the div
+        upcomingDatesDiv.innerHTML = '';
+
+        // Create and append date elements
+        dates.forEach((date, index) => {
+            const dateElement = document.createElement('div');
+            const day = date.toLocaleString('en-US', { weekday: 'short' }).toUpperCase();
+            const month = date.toLocaleString('en-US', { month: 'short' }).toUpperCase();
+
+            dateElement.innerHTML = `<div class="day">${day}</div><div>${date.getDate()}</div><div class="month">${month}</div>`;
+            dateElement.classList.add('date-box');
+
+            // Add click event to select the date
+            dateElement.addEventListener('click', () => {
+                // Remove the active class from the previously selected date
+                if (selectedDate) {
+                    selectedDate.classList.remove('active-date');
+                }
+
+                // Add the active class to the newly selected date
+                dateElement.classList.add('active-date');
+                selectedDate = dateElement;
+
+                const selectedDateInput = document.getElementById('selectedDate');
+                selectedDateInput.value = date.toDateString();
+            });
+
+            upcomingDatesDiv.appendChild(dateElement);
+
+            // Set the current date as default selected date
+            if (index === 0) {
+                dateElement.click(); // Simulate a click on the first date
+            }
+        });
+    }
+
+    // Initial update
+    updateUpcomingDates();
+
+</script>
+
+
+
+<script>
+    document.querySelectorAll('.seat-icon').forEach(icon => {
+  icon.addEventListener('click', function() {
+    const seatName = this.getAttribute('seat-name');
+    const selectedSeats = document.getElementById('selected-seat').value;
+    if (selectedSeats.includes(seatName)) {
+      const updatedSeats = selectedSeats.replace(seatName, '').replace(/,\s*,/g, ',').replace(/^,|,/g, '');
+      document.getElementById('selected-seat').value = updatedSeats;
+    } else {
+      if (selectedSeats) {
+        document.getElementById('selected-seat').value = selectedSeats + ', ' + seatName;
+      } else {
+        document.getElementById('selected-seat').value = seatName;
+      }
+    }
+  });
+});
+</script>
+
+
+<script>
+    function updateTime(time){
+        document.getElementById('selectedTime').value = time;
+    }
+</script>
+
+</body>
+
+</html>

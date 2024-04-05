@@ -1,0 +1,133 @@
+<!--<!DOCTYPE html>-->
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div class="div1">
+	<h1 style="text-align:center;padding-top:20px;color:white">Login</h1>
+	<div class="col align-items-center flex-col sign-in">
+				<div class="form-wrapper align-items-center">
+					<div class="form sign-in">
+
+                        <form method="post" class="form-box" action="{% url 'UserLogin' %}">
+							{% csrf_token %}
+
+						<div class="input-group input-field">
+							<i class='bx bxs-user'></i>
+							<input type="email" placeholder="email" name="email" required>
+						</div>
+						<div class=" input-field">
+							<i class='bx bxs-lock-alt'></i>
+							<input type="password" placeholder="Password" name="password" required>
+						</div>
+
+
+
+						<button type="submit" class="btn">
+							Sign in
+						</button>
+						<p style="color:white;">
+							<b>
+								Forgot password?
+							</b>
+						</p>
+
+                            </form>
+					</div>
+				</div>
+			</div>
+</div>
+
+
+
+<style>
+	.div1{
+
+       height:650px;
+       background-image:url({% static 'home\img\loginbg.jpg' %});
+       background-repeat:no-repeat;
+       background-size:100% 100%;
+
+        }
+	.form-box{
+    height:300px;
+    width: 90%;
+    max-width: 450px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    background: transparent;
+    border-radius: 10px;
+    box-shadow: 0 4px 18px #fff;
+    padding: 50px 60px 70px;
+    text-align: center;
+}
+	.input-field{
+    background: transparent;
+    margin: 15px 0;
+    border-radius: 30px;
+    display: flex;
+    align-items: center;
+    max-height: 65px;
+    transition: max-height 0.5s;
+    overflow: hidden;
+    box-shadow: 0 0 6px #fff;
+
+
+}
+	input{
+    width: 100%;
+    background: transparent;
+    border: 0;
+    outline: 0;
+    padding: 18px 15px;
+    font-size: 16px;
+    color:red;
+}
+	.btn{
+    flex-basis: 48%;
+    background: #3c00a0;
+    color: #fff;
+    height: 40px;
+    border-radius: 20px;
+    border: 0;
+    outline: 0;
+    cursor: pointer;
+    transition: background 1s;
+    width:200px;
+    margin-top:30px;
+}
+    .btn:hover{
+    background: green;
+    }
+</style>
+
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+{% if messages %}
+    {% for i in messages %}
+        {% if i.tags == 'warning' %}
+            <script>
+                swal('{{i}}','','warning')
+            </script>
+        {% elif i.tags == 'error' %}
+            <script>
+                swal('{{i}}','','error')
+            </script>
+        {% elif i.tags == 'success' %}
+            <script>
+                swal('{{i}}','','success')
+            </script>
+        {% else %}
+             <script>
+                swal('{{i}}','','info')
+            </script>
+        {% endif %}
+    {% endfor %}
+{% endif %}
+</body>
+</html>

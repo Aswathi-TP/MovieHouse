@@ -1,0 +1,84 @@
+<!--<!DOCTYPE html>-->
+{% extends 'index.html' %}
+{% block content %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="col-12" style="margin-top:20px;">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="card-title">Show Time</h4>
+
+                            </div>
+                            <div class="table-responsive">
+                                <table class="table">
+                                    <thead class="thead-light">
+                                        <tr>
+                                            <th scope="col">Theatre Name</th>
+                                            <th scope="col">Morning Show</th>
+                                            <th scope="col">Noon Show</th>
+                                            <th scope="col">Evening Show</th>
+                                            <th scope="col">First Show</th>
+                                            <th scope="col">Second Show</th>
+                                            <th scope="col">Movie Name</th>
+                                            <th scope="col">Time and Date</th>
+                                            <th scope="col">Price</th>
+                                            <th scope="col">Option</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                    {% for d in show %}
+                                    <tr>
+                                        <td>{{d.Theatre}}</td>
+                                        <td>{{d.Show1}}</td>
+                                        <td>{{d.Show2}}</td>
+                                        <td>{{d.Show3}}</td>
+                                        <td>{{d.Show4}}</td>
+                                        <td>{{d.Show5}}</td>
+                                        <td>{{d.Movie}}</td>
+                                        <td>{{d.Time}}</td>
+                                        <td>{{d.price}}</td>
+                                        <td>
+                                            <a href="{% url 'edit_show' s_id=d.id %}">
+                                              <i class="fas fa-edit" style="color:green;padding-left:5px;"></i>
+                                            </a>
+                                            <a href="{% url 'delete_show' s_id=d.id %}">
+                                                <i class="fas fa-trash-alt" style="color:red;padding-left:10px;"></i>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                    {% endfor %}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+{% if messages %}
+    {% for i in messages %}
+        {% if i.tags == 'warning' %}
+            <script>
+                swal('{{i}}','','warning')
+            </script>
+        {% elif i.tags == 'error' %}
+            <script>
+                swal('{{i}}','','error')
+            </script>
+        {% elif i.tags == 'success' %}
+            <script>
+                swal('{{i}}','','success')
+            </script>
+        {% else %}
+             <script>
+                swal('{{i}}','','info')
+            </script>
+        {% endif %}
+    {% endfor %}
+{% endif %}
+</body>
+</html>
+{% endblock %}

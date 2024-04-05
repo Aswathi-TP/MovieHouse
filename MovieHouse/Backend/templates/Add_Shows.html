@@ -1,0 +1,103 @@
+<!--<!DOCTYPE html>-->
+{% extends 'index.html' %}
+{% block content %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="col-sm-12 col-md-12" style="margin-top:20px;">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="card-title">Add Show Time</h4>
+                                 <form method="post" action="{% url 'save_show' %}">
+                                     {% csrf_token %}
+                                     <div class="form-group mb-4">
+                                        <label class="mr-sm-2">Theatre Name</label>
+                                        <select class="custom-select mr-sm-2"  name="theatre">
+                                            {% for i in show %}
+                                            <option selected="">{{i.TheatreName}}</option>
+                                            {% endfor %}
+                                        </select>
+                                    </div>
+
+                                     <div class="form-group mb-4">
+                                        <label class="mr-sm-2">Show Name</label>
+<!--                                        <select class="custom-select mr-sm-2"  name="show">-->
+<!--                                            <option selected="">Choose Shows</option>-->
+<!--                                            <option>Show1</option>-->
+<!--                                            <option>Show2</option>-->
+<!--                                        </select>-->
+                                         <input type="text" class="form-control mb-3" placeholder="Morning Show" name="show1">
+                                         <input type="text" class="form-control mb-3" placeholder="Noon Show" name="show2">
+                                         <input type="text" class="form-control mb-3" placeholder="Evening Show" name="show3">
+                                         <input type="text" class="form-control mb-3" placeholder="First Show" name="show4">
+                                         <input type="text" class="form-control mb-3" placeholder="Second Show" name="show5">
+
+                                    </div>
+                                     <div class="form-group mb-4">
+                                        <label class="mr-sm-2">Movie Name</label>
+                                        <select class="custom-select mr-sm-2"  name="movie">
+                                            {% for d in mov %}
+                                            <option selected="">{{d.MovieName}}</option>
+                                            {% endfor %}
+                                        </select>
+                                    </div>
+                                     <div class="row mb-3">
+                                            <div class="form-group col-sm-12 col-md-4">
+                                                <label>Time</label>
+                                                <input type="datetime-local" class="form-control" placeholder="Time" name="time">
+                                            </div>
+
+
+
+                                         <div class="form-group col-sm-12 col-md-4">
+                                                <label>Price</label>
+                                                <input type="text" class="form-control" placeholder="Price" name="price">
+                                            </div>
+
+                                        </div>
+
+
+
+
+                                        <div class="form-actions">
+                                        <div class="text-center">
+                                            <button type="submit" class="btn btn-info">Submit</button>
+                                        </div>
+                                    </div>
+
+
+                                </form>
+                            </div>
+                        </div>
+</div>
+
+
+
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+{% if messages %}
+    {% for i in messages %}
+        {% if i.tags == 'warning' %}
+            <script>
+                swal('{{i}}','','warning')
+            </script>
+        {% elif i.tags == 'error' %}
+            <script>
+                swal('{{i}}','','error')
+            </script>
+        {% elif i.tags == 'success' %}
+            <script>
+                swal('{{i}}','','success')
+            </script>
+        {% else %}
+             <script>
+                swal('{{i}}','','info')
+            </script>
+        {% endif %}
+    {% endfor %}
+{% endif %}
+</body>
+</html>
+{% endblock %}

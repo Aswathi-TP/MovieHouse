@@ -1,0 +1,85 @@
+<!--<!DOCTYPE html>-->
+{% extends 'index.html' %}
+{% block content %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="col-12" style="margin-top:20px;">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="card-title">Theatre Details</h4>
+
+                            </div>
+                            <div class="table-responsive">
+                                <table class="table">
+                                    <thead class="thead-light">
+                                        <tr>
+                                            <th scope="col">Name</th>
+                                            <th scope="col">Address</th>
+                                            <th scope="col">Contact</th>
+                                            <th scope="col">Email</th>
+                                            <th scope="col">Screens</th>
+                                            <th scope="col">Capacity</th>
+                                            <th scope="col">Status</th>
+                                            <th scope="col">Image</th>
+                                            <th scope="col">Option</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                    {% for d in data %}
+                                    <tr>
+                                        <td>{{d.TheatreName}}</td>
+                                        <td>{{d.TheatreAddress}}</td>
+                                        <td>{{d.Contact}}</td>
+                                        <td>{{d.Email}}</td>
+                                        <td>{{d.Screen}}</td>
+                                        <td>{{d.Capacity}}</td>
+                                        <td>{{d.Status}}</td>
+                                        <td>
+                                            <img src="{{d.TheatreImage.url}}" width="70px" height="70px">
+                                        </td>
+                                        <td>
+                                            <a href="{% url 'edit_theatre' t_id=d.id %}">
+                                              <i class="fas fa-edit" style="color:green;padding-left:5px;"></i>
+                                            </a>
+                                            <a href="{% url 'delete_theatre' t_id=d.id %}">
+                                                <i class="fas fa-trash-alt" style="color:red;padding-left:10px;"></i>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                    {% endfor %}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+{% if messages %}
+    {% for i in messages %}
+        {% if i.tags == 'warning' %}
+            <script>
+                swal('{{i}}','','warning')
+            </script>
+        {% elif i.tags == 'error' %}
+            <script>
+                swal('{{i}}','','error')
+            </script>
+        {% elif i.tags == 'success' %}
+            <script>
+                swal('{{i}}','','success')
+            </script>
+        {% else %}
+             <script>
+                swal('{{i}}','','info')
+            </script>
+        {% endif %}
+    {% endfor %}
+{% endif %}
+</body>
+</html>
+{% endblock %}

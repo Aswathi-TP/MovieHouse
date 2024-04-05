@@ -1,0 +1,476 @@
+
+<!--<!DOCTYPE html>-->
+{% load static %}
+<html lang="zxx">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Amin Template">
+    <meta name="keywords" content="Amin, unica, creative, html">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Amin | Template</title>
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600,700,800,900&display=swap"
+        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Cinzel:400,700,900&display=swap" rel="stylesheet">
+
+    <!-- Css Styles -->
+    <link rel="stylesheet" href="{% static 'home/css/bootstrap.min.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'home/css/font-awesome.min.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'home/css/elegant-icons.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'home/css/owl.carousel.min.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'home/css/barfiller.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'home/css/magnific-popup.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'home/css/slicknav.min.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'home/css/style.css' %}" type="text/css">
+</head>
+
+<body>
+    <!-- Page Preloder -->
+    <div id="preloder">
+        <div class="loader"></div>
+    </div>
+
+    <!-- Humberger Menu Begin -->
+    <div class="humberger-menu-overlay"></div>
+   <div class="humberger-menu-wrapper">
+        <div class="hw-logo">
+            <a href="#"><img src="{% static 'home/img/f-logo.png' %}" alt=""></a>
+        </div>
+        <div class="hw-menu mobile-menu">
+            <ul>
+                <li><a href="{% url 'homepage' %}">Home</a></li>
+                <li><a href="{% url 'about_page' %}">About</a></li>
+                <li><a href="{% url 'contact_page' %}">Contact</a></li>
+                {% if username %}
+                <li><a href="{% url 'user_logout' %}">LogOut</a></li>
+                {% endif %}
+            </ul>
+        </div>
+        <div id="mobile-menu-wrap"></div>
+        <div class="hw-copyright">
+            Copyright © 2024. All rights reserved
+        </div>
+        <div class="hw-social">
+            <a href="#"><i class="fa fa-facebook" style="margin-top:15px;"></i></a>
+            <a href="#"><i class="fa fa-twitter" style="margin-top:15px;"></i></a>
+            <a href="#"><i class="fa fa-youtube-play" style="margin-top:15px;"></i></a>
+            <a href="#"><i class="fa fa-instagram" style="margin-top:15px;"></i></a>
+        </div>
+
+    </div>
+    <!-- Humberger Menu End -->
+
+    <!-- Header Section Begin -->
+     <header class="header-section">
+        <div class="ht-options">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6 col-md-8">
+                        <div class="ht-widget">
+                            <ul>
+                         <li><i class="fa fa-clock-o"></i>{{ current_date }}</li>
+                    {% if username %}
+                <li class="nav-item"><a href="{% url 'user_logout' %}" class="nav-link" style="color:white;">Welcome {{ username }} / Logout</a></li>
+                                {% else %}
+                <li class="nav-item"><a href="{% url 'login_signup' %}" class="nav-link" style="color:white;">Register / Login</a></li>
+                    {% endif %}
+
+<!--                <li class="nav-item"><a href="{% url 'user_login' %}" class="nav-link">Register / Login</a></li>-->
+
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-4">
+                        <div class="ht-social">
+                            <a href="#"><i class="fa fa-facebook"></i></a>
+                            <a href="#"><i class="fa fa-twitter"></i></a>
+                            <a href="#"><i class="fa fa-youtube-play"></i></a>
+                            <a href="#"><i class="fa fa-instagram"></i></a>
+                            <a href="#"><i class="fa fa-envelope-o"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="logo">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12 text-center">
+                       <a href="./index.html"><img src="{% static 'home/img/logo.png' %}" alt=""></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="nav-options">
+            <div class="container">
+                <div class="humberger-menu humberger-open">
+                    <i class="fa fa-bars"></i>
+                </div>
+                <div class="nav-search search-switch">
+                    <i class="fa fa-search"></i>
+                </div>
+                <div class="nav-menu">
+                    <ul>
+                        <li><a href="{% url 'homepage' %}"><span>Home</span></a></li>
+
+                        <li  class="active"><a href="{% url 'movie_details' %}"><span>Movies </span></a></li>
+                        <li><a href="{% url 'contact_page' %}"><span>Contact</span></a></li>
+                         <li><a href="{% url 'about_page' %}"><span>About</span></a></li>
+                         {% if username %}
+                        <li><a href="{% url 'booking_history' %}"><span>Booking History</span></a></li>
+                        <li>
+                            <a href="#"><span>{{ username }}<i class="fa fa-angle-down"></i></span></a>
+                            <ul class="dropdown">
+                                <li><a href="{% url 'profile_update' %}">Profile</a></li>
+                                <li><a href="{% url 'user_logout' %}">LogOut</a></li>
+
+                            </ul>
+                        </li>
+
+                        {% else %}
+                         <li><a href="{% url 'home' %}"> <span> Register / Login</span></a></li>
+
+                        {% endif %}
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- Header End -->
+
+    <!-- Breadcrumb Section Begin -->
+
+    <!-- Breadcrumb Section End -->
+
+    <!-- Contact Section Begin -->
+    <section class="contact-section spad">
+
+<!--        <form class="d-flex mb-3" role="search" style="text-align:center;">-->
+<!--        <input class="form-control me-2 mb-3" type="search" placeholder="Search" aria-label="Search" style="width:500px;margin-left:600px;">-->
+<!--        <button class="btn btn-outline-success mb-3" type="submit">Search</button>-->
+<!--      </form>-->
+
+        <div class="container" >
+            <div id="filteredMovies">
+                <p class="ajaxLoader">Loading</p>
+            {% for movie in film %}
+                <div >
+            <div class="div2 movie" style="margin-bottom:50px;" data-languages="{{movie.Language}}" data-genres="{{movie.Genre}}">
+            <div class="vg-item large-vg set-bg" data-setbg="{{movie.Poster2.url}}" style="background-image: {{movie.Poster2.url}} border-radius:10px; height:350px;background-size:100% 100%;">
+                                                <a href="{{movie.TrailerLink}}" class="play-btn video-popup"><i class="fa fa-play"></i></a>
+                                                <div class="vg-text">
+                                                    <h4 style="color:white;"><b>{{movie.MovieName}}</b></h4>
+                                                    <ul>
+                                                        <li style="color:white;"><i class="fa fa-calendar-o"></i>{{movie.ReleaseDate}}</li>
+                                                        <li style="color:white;"><i class="fa fa-comment-o"></i> 12</li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+
+
+                                        <div class="col-md-4 div3" >
+                                            <h2 style="color:white;padding-top:80px;" class="mb-3">{{movie.MovieName}}</h2>
+                                            <h6 style="color:white" class="mb-3" > {{movie.Duration}} </h6>
+                                            <h4 class="mb-3" style="color:white;">{{movie.Language}}</h4>
+                                            <h6 class="mb-3" style="color:white;">{{movie.Genre}}</h6>
+
+                                            <h6 style="color:white" class="mb-3">{{movie.ReleaseDate}}</h6>
+
+<!--                                            <h6 class="mb-3" style="color:white;width:500px;">{{film.Synopsis}}</h6>-->
+
+<!--                                            <div class="dropdown mb-3">-->
+<!--  <button class="btn  dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" style="color:white;"><b>-->
+<!--    SYNOPSIS</b>-->
+<!--  </button>-->
+<!--  <ul class="dropdown-menu">-->
+<!--    <li><a class="dropdown-item" href="#">{{film.Synopsis}}</a></li>-->
+<!--    <li><a class="dropdown-item" href="#">Another action</a></li>-->
+<!--    <li><a class="dropdown-item" href="#">Something else here</a></li>-->
+<!--  </ul>-->
+<!--</div>-->
+                                            <a href="{% url 'get_movie_details' movie_id=movie.id %}">
+                                                <button style="border-radius:10px; width:200px; height:50px; background:red; color:white;" class="mb-2">
+                                                    <b>BOOK TICKETS</b></button>
+
+                                            </a>
+
+<!--                                            <a style="text-decoration:none">-->
+<!--                                                <button style="border-radius:10px; width:130px; height:40px; background:transparent; color:white;margin-left:400px;margin-top:-130px;border:solid 1px gray;" class="mb-2">-->
+<!--                                                    <b>REVIEWS</b></button>-->
+
+<!--                                            </a>-->
+
+
+
+                                        </div>
+
+                                    </div>
+
+
+            {% endfor %}
+                    </div>
+             </div>
+        </div>
+<!--<div class="container">-->
+<!--    <div  class="div4">-->
+<!--        <h3 style="color:white;padding-top:50px;margin-bottom:0px;margin-left:50px;">Filter By</h3>-->
+<!--        <div class="div5 " >-->
+
+<!--            <h5 style="color:white;padding-top:30px;margin-left:30px;margin-bottom:40px;">Language</h5>-->
+<!--            {% for language in languages %}-->
+<!--            <div class="form-check mb-3 vg-text " style="margin-left:70px;color:white;">-->
+<!--  <input class="form-check-input filter-checkbox" data-filter="Language" type="checkbox" value="{{language.Language}}" id="flexCheckDefault" >-->
+<!--  <label class="form-check-label" for="flexCheckDefault">-->
+<!--      {{language.Language}}-->
+<!--  </label>-->
+<!--</div>-->
+
+<!--            {% endfor %}-->
+
+<!--        </div>-->
+
+<!--        <div class="div5">-->
+
+<!--            <h5 style="color:white;padding-top:30px;margin-left:30px;margin-bottom:40px;">Genre</h5>-->
+
+<!--            {% for genre in genres %}-->
+<!--            <div class="form-check mb-3" style="margin-left:70px;color:white;">-->
+<!--  <input class="form-check-input filter-checkbox" data-filter="Genre" type="checkbox" value="{{genre.Genre}}"  >-->
+<!--  <label class="form-check-label" for="flexCheckDefault">-->
+<!--      {{genre.Genre}}-->
+<!--  </label>-->
+<!--</div>-->
+
+<!--            {% endfor %}-->
+
+<!--        </div>-->
+
+<!--        <div class="div5" style="height:100px;">-->
+<!--            <a>-->
+<!--            <button style="border-radius:10px; width:200px; height:50px; background:red; color:white;margin-top:28px; margin-left:55px;">-->
+<!--                <b>BROWSE</b></button>-->
+
+<!--        </a>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</div>-->
+
+
+
+
+
+
+
+    </section>
+
+    <!-- Contact Section End -->
+
+    <!-- Footer Section Begin -->
+   <footer class="footer-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="footer-about">
+                        <div class="fa-logo">
+                            <a href="#"><img src="{% static 'home/img/f-logo.png' %}" alt=""></a>
+                        </div>
+                        <p>Providing user friendly interface for booking movie tickets.</p>
+                        <div class="fa-social">
+                            <a href="#"><i class="fa fa-facebook" style="margin-top:15px;"></i></a>
+                            <a href="#"><i class="fa fa-twitter" style="margin-top:15px;"></i></a>
+                            <a href="#"><i class="fa fa-youtube-play" style="margin-top:15px;"></i></a>
+                            <a href="#"><i class="fa fa-instagram" style="margin-top:15px;"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-12">
+                    <div class="editor-choice">
+                        <div class="section-title">
+                            <h5>Editor's Choice</h5>
+                        </div>
+                        <div class="ec-item">
+                            <div class="ec-pic">
+                                <img src="img/trending/editor-1.jpg" alt="">
+                            </div>
+                            <div class="ec-text">
+                                <h6><a href="#">A Monster Prom poster got hijacked for a Papa Roach concert...</a>
+                                </h6>
+                                <ul>
+                                    <li><i class="fa fa-clock-o"></i> Aug 01, 2019</li>
+                                    <li><i class="fa fa-comment-o"></i> 12</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="ec-item">
+                            <div class="ec-pic">
+                                <img src="img/trending/editor-2.jpg" alt="">
+                            </div>
+                            <div class="ec-text">
+                                <h6><a href="#">Facebook wants to read your thoughts with its augmented...</a>
+                                </h6>
+                                <ul>
+                                    <li><i class="fa fa-clock-o"></i> Aug 01, 2019</li>
+                                    <li><i class="fa fa-comment-o"></i> 12</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+<!--                <div class="col-lg-4 col-md-6">-->
+<!--                    <div class="tags-cloud">-->
+<!--                        <div class="section-title">-->
+<!--                            <h5>Tags Cloud</h5>-->
+<!--                        </div>-->
+<!--                        <div class="tag-list">-->
+<!--                            <a href="#"><span>Gaming</span></a>-->
+<!--                            <a href="#"><span>Platform</span></a>-->
+<!--                            <a href="#"><span>Playstation</span></a>-->
+<!--                            <a href="#"><span>Hardware</span></a>-->
+<!--                            <a href="#"><span>Reviews</span></a>-->
+<!--                            <a href="#"><span>Simulation</span></a>-->
+<!--                            <a href="#"><span>Strategy</span></a>-->
+<!--                            <a href="#"><span>Scientific</span></a>-->
+<!--                            <a href="#"><span>References</span></a>-->
+<!--                            <a href="#"><span>Role-playing</span></a>-->
+<!--                            <a href="#"><span>Adventurea</span></a>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+            </div>
+            <div class="copyright-area">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="ca-text"><p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+  Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved |
+  <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p></div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="ca-links">
+                            <a href="{% url 'about_page' %}">About</a>
+
+                            <a href="{% url 'contact_page' %}">Contact</a>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- Footer Section End -->
+
+
+
+    <!-- Search model Begin -->
+    <div class="search-model">
+        <div class="h-100 d-flex align-items-center justify-content-center">
+            <div class="search-close-switch">+</div>
+            <form class="search-model-form" method="get" action="{% url 'search_view' %}">
+                <input type="text" id="search-input" name="query" placeholder="Search here.....">
+            </form>
+        </div>
+    </div>
+    <!-- Search model end -->
+
+
+    <style>
+        .div2{
+            width:320px;
+            height:350px;
+
+
+            box-shadow: 0 0 40px 2px rgba(37,73,214,0.14);
+
+        }
+        .div3{
+            margin-left:400px;
+            margin-top:-400px;
+
+        }
+        .div4{
+            width:430px;
+            height:1180px;
+            display:flex;
+            margin-top:-1210px;
+            margin-left:80px;
+        }
+        .div5{
+            text-transform: uppercase;
+            width:300px;
+            height:250px;
+            margin-left:60px;
+            margin-top:50px;
+            background:black;
+            box-shadow: 0 0 10px 2px rgba(37,73,214,0.14);
+        }
+    </style>
+
+    <!-- Js Plugins -->
+    <script src="{% static 'home/js/jquery-3.3.1.min.js' %}"></script>
+    <script src="{% static 'home/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'home/js/jquery.magnific-popup.min.js' %}"></script>
+    <script src="{% static 'home/js/circle-progress.min.js' %}"></script>
+    <script src="{% static 'home/js/jquery.barfiller.js' %}"></script>
+    <script src="{% static 'home/js/jquery.slicknav.js' %}"></script>
+    <script src="{% static 'home/js/owl.carousel.min.js' %}"></script>
+    <script src="{% static 'home/js/main.js' %}"></script>
+
+
+<script>
+    $(document).ready(function(){
+        $(".ajaxLoader").hide();
+        $(".filter-checkbox").on('click',function(){
+            var _filterObj={};
+            $(".filter-checkbox").each(function(home,ele){
+                var _filterVal=$(this).val();
+                var _filterKey=$(this).data('filter');
+                _filterObj[_filterKey]=Array.from(document.querySelectorAll('input[data-filter='+_filterKey+']:checked')).map(function(){
+                    return ele.value;
+               });
+            });
+
+            $.ajax({
+                url:'/filter_data',
+                data:_filterObj,
+                dataType:'json',
+                beforeSend:function(){
+                    $(".ajaxLoader").show();
+                },
+                success:function(res){
+                    console.log(res);
+                    $("#filteredMovies").html(res.data)
+                    $(".ajaxLoader").hide();
+                }
+            });
+        });
+    });
+</script>
+
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+{% if messages %}
+    {% for i in messages %}
+        {% if i.tags == 'warning' %}
+            <script>
+                swal('{{i}}','','warning')
+            </script>
+        {% elif i.tags == 'error' %}
+            <script>
+                swal('{{i}}','','error')
+            </script>
+        {% elif i.tags == 'success' %}
+            <script>
+                swal('{{i}}','','success')
+            </script>
+        {% else %}
+             <script>
+                swal('{{i}}','','info')
+            </script>
+        {% endif %}
+    {% endfor %}
+{% endif %}
+</body>
+
+</html>

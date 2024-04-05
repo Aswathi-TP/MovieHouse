@@ -1,0 +1,972 @@
+
+<!--<!DOCTYPE html>-->
+{% load static %}
+<html lang="zxx">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Amin Template">
+    <meta name="keywords" content="Amin, unica, creative, html">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Amin | Template</title>
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600,700,800,900&display=swap"
+        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Cinzel:400,700,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+    <!-- Css Styles -->
+    <link rel="stylesheet" href="{% static 'home/css/bootstrap.min.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'home/css/font-awesome.min.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'home/css/elegant-icons.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'home/css/owl.carousel.min.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'home/css/barfiller.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'home/css/magnific-popup.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'home/css/slicknav.min.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'home/css/style.css' %}" type="text/css">
+</head>
+
+<body>
+    <!-- Page Preloder -->
+    <div id="preloder">
+        <div class="loader"></div>
+    </div>
+
+    <!-- Humberger Menu Begin -->
+    <div class="humberger-menu-overlay"></div>
+    <div class="humberger-menu-wrapper">
+        <div class="hw-logo">
+            <a href="#"><img src="{% static 'home/img/f-logo.png' %}" alt=""></a>
+        </div>
+        <div class="hw-menu mobile-menu">
+            <ul>
+                <li><a href="{% url 'homepage' %}">Home</a></li>
+                <li><a href="{% url 'about_page' %}">About</a></li>
+                <li><a href="{% url 'contact_page' %}">Contact</a></li>
+                {% if username %}
+                <li><a href="{% url 'user_logout' %}">LogOut</a></li>
+                {% endif %}
+            </ul>
+        </div>
+        <div id="mobile-menu-wrap"></div>
+        <div class="hw-copyright">
+            Copyright © 2024. All rights reserved
+        </div>
+        <div class="hw-social">
+            <a href="#"><i class="fa fa-facebook" style="margin-top:15px;"></i></a>
+            <a href="#"><i class="fa fa-twitter" style="margin-top:15px;"></i></a>
+            <a href="#"><i class="fa fa-youtube-play" style="margin-top:15px;"></i></a>
+            <a href="#"><i class="fa fa-instagram" style="margin-top:15px;"></i></a>
+        </div>
+
+    </div>
+    <!-- Humberger Menu End -->
+
+    <!-- Header Section Begin -->
+    <header class="header-section">
+        <div class="ht-options">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6 col-md-8">
+                        <div class="ht-widget">
+                            <ul>
+                         <li><i class="fa fa-clock-o"></i>{{ current_date }}</li>
+                    {% if username %}
+                <li class="nav-item"><a href="{% url 'user_logout' %}" class="nav-link" style="color:white;">Welcome {{ username }} / Logout</a></li>
+                                {% else %}
+                <li class="nav-item"><a href="{% url 'login_signup' %}" class="nav-link" style="color:white;">Register / Login</a></li>
+                    {% endif %}
+
+<!--                <li class="nav-item"><a href="{% url 'user_login' %}" class="nav-link">Register / Login</a></li>-->
+
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-4">
+                        <div class="ht-social">
+                            <a href="#"><i class="fa fa-facebook"></i></a>
+                            <a href="#"><i class="fa fa-twitter"></i></a>
+                            <a href="#"><i class="fa fa-youtube-play"></i></a>
+                            <a href="#"><i class="fa fa-instagram"></i></a>
+                            <a href="#"><i class="fa fa-envelope-o"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="logo">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12 text-center">
+                       <a href="./index.html"><img src="{% static 'home/img/logo.png' %}" alt=""></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="nav-options">
+            <div class="container">
+                <div class="humberger-menu humberger-open">
+                    <i class="fa fa-bars"></i>
+                </div>
+                <div class="nav-search search-switch">
+                    <i class="fa fa-search"></i>
+                </div>
+                <div class="nav-menu">
+                    <ul>
+                        <li><a href="{% url 'homepage' %}"><span>Home</span></a></li>
+
+                        <li><a href="{% url 'movie_details' %}"><span>Movies </span></a></li>
+                        <li><a href="{% url 'contact_page' %}"><span>Contact</span></a></li>
+                         <li><a href="{% url 'about_page' %}"><span>About</span></a></li>
+                         {% if username %}
+                        <li><a href="{% url 'booking_history' %}"><span>Booking History</span></a></li>
+                        <li>
+                            <a href="#"><span>{{ username }}<i class="fa fa-angle-down"></i></span></a>
+                            <ul class="dropdown">
+                                <li><a href="{% url 'profile_update' %}">Profile</a></li>
+                                <li><a href="{% url 'user_logout' %}">LogOut</a></li>
+
+                            </ul>
+                        </li>
+
+                        {% else %}
+                         <li><a href="{% url 'home' %}"> <span> Register / Login</span></a></li>
+
+                        {% endif %}
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- Header End -->
+
+    <!-- Breadcrumb Section Begin -->
+
+    <!-- Breadcrumb Section End -->
+
+    <!-- Contact Section Begin -->
+    <section class="contact-section spad">
+        <div class="div1">
+        </div>
+        <div class="div2">
+
+            <div class="vg-item large-vg set-bg" data-setbg="{{movie_details.Poster2.url}}" style="background-image: {{movie_details.Poster2.url}} border-radius:10px;">
+                                                <a href="{{movie_details.TrailerLink}}" class="play-btn video-popup"><i class="fa fa-play"> watch trailer</i></a>
+                                                <div class="vg-text">
+                                                    <h4 style="color:white;"><b>{{movie_details.MovieName}}</b></h4>
+                                                    <ul>
+                                                        <li style="color:white;"><i class="fa fa-calendar-o"></i>{{movie_details.ReleaseDate}}</li>
+                                                        <li style="color:white;"><i class="fa fa-comment-o"></i> 12</li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+
+
+                                        <div class="col-md-6 div3" >
+                                            <h2 style="color:white;padding-top:80px;" class="mb-3">{{movie_details.MovieName}}</h2>
+                                            <h4 class="mb-3" style="color:white;">{{movie_details.Language}}</h4>
+                                            <h6 class="mb-3" style="color:white;">{{movie_details.Genre}}</h6>
+
+                                            <h6 style="color:white" class="mb-3"> <i class="fa fa-calendar-o" ></i>  {{movie_details.ReleaseDate}}</h6>
+                                            <h6 style="color:white" class="mb-3" ><i class="fa fa-clock-o mb-3" ></i>  {{movie_details.Duration}} </h6>
+
+<div class="nav-options" style="background-color:transparent;border-radius:10px;">
+            <div  style="backgorund-color:none;">
+                                            <div class="nav-menu">
+                    <ul >
+                        <li class="mega-menu"><a href="#" class="mb-3" style="border-radius:20px;width:150px;height:30px;background-color:transparent;border:solid 1px gray;text-align:center;"><span style="margin-top:-10px;">Synopsis <i class="fa fa-angle-down"></i></span></a>
+                            <div class="megamenu-wrapper">
+                                <ul class="mw-nav">
+                                    <li><span style="color:darkred;">{{movie_details.Synopsis}}</span></li>
+                                </ul>
+
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                                            <a href="#" onclick="openPopup()">
+                                                <button style="border-radius:10px; width:200px; height:50px; background:red; color:white;" class="mb-2" onclick="openPopup()">
+                                                    <b>BOOK TICKETS</b>
+
+                                                </button>
+                                            </a>
+
+
+
+<div id="myPopup" class="popup">
+
+    <span class="close-btn" onclick="closePopup()"><i class="fas fa-close"></i></span>
+<h4>Please select prefered theatre</h4>
+
+     <div class="row" >
+                {% for i in theatre %}
+                <div class="col-md-6 col-lg-4" style="height:300px;" >
+<!--                    <h1 class="mb-5">Hot Coffee</h1>-->
+
+                    <div class="" style="box-shadow:0 0 40px 2px rgba(37,73,214,0.18); border-radius:10px;">
+                        <img src="{{i.TheatreImage.url}}" alt="Image" width="130px" height="100px" style="padding-top:10px;">
+
+                        <div style="text-align:center;">
+                            <div style="padding-top:10px;">
+                            <h4><a href="{% url 'seat_select' theatre_id=i.id movie_id=movie_details.id %}" >{{i.TheatreName}}</a></h4>
+                        </div>
+                            <div>
+                                <p>{{i.TheatreAddress}}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+         {% endfor %}
+
+    </div>
+</div>
+</div>
+
+    <a style="text-decoration:none">
+        <button style="border-radius:10px; width:130px; height:40px; background:transparent; color:white;margin-left:400px;margin-top:-110px;border:solid 1px gray;" class="mb-2">REVIEWS</button>
+    </a>
+
+</div></div>
+        </div>
+            </div>
+    </section>
+
+
+    <section class="latest-preview-section" >
+        <div class="container" >
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="section-title">
+                        <h5>Posters</h5>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="lp-slider owl-carousel owl-loaded owl-drag">
+                    <div class="col-lg-3">
+
+                    <div class="owl-stage-outer">
+                        <div class="owl-stage" style="transform: translate3d(-1350px, 0px, 0px); transition: all 1.2s ease 0s; width: 3000px;">
+                            <div class="owl-item cloned" style="width: 100px;">
+                                <div class="col-lg-3">
+                        <div class="lp-item">
+                            <div class="lp-pic set-bg" data-setbg="{{movie_details.Poster1.url}}" style="background-image: url(&quot;img/latest-preview/lp-4.jpg&quot;);border-radius:10px;background-size:100% 100%;">
+
+                            </div>
+
+                        </div>
+                    </div></div>
+                           <div class="owl-item cloned" style="width: 270px;"><div class="col-lg-3">
+                        <div class="lp-item">
+                            <div class="lp-pic set-bg" data-setbg="{{movie_details.Poster2.url}}" style="background-image: url(&quot;img/latest-preview/lp-3.jpg&quot;);border-radius:10px;background-size:100% 100%;">
+
+                            </div>
+
+                        </div>
+                    </div></div>
+                            <div class="owl-item cloned" style="width: 270px;"><div class="col-lg-3">
+                        <div class="lp-item">
+                            <div class="lp-pic set-bg" data-setbg="{{movie_details.Poster3.url}}" style="background-image: url(&quot;img/latest-preview/lp-4.jpg&quot;);border-radius:10px;background-size:100% 100%;">
+
+                            </div>
+
+                        </div>
+                    </div></div></div></div><div class="owl-nav"><button type="button" role="presentation" class="owl-prev"><span class="arrow_carrot-left"></span></button><button type="button" role="presentation" class="owl-next"><span class="arrow_carrot-right"></span></button></div><div class="owl-dots"><button role="button" class="owl-dot active"><span></span></button><button role="button" class="owl-dot"><span></span></button><button role="button" class="owl-dot"><span></span></button><button role="button" class="owl-dot"><span></span></button></div></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    
+
+
+    <section class="latest-preview-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="section-title">
+                        <h5>Cast</h5>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+
+                <div class="lp-slider owl-carousel">
+                     {% for actor in actors %}
+                    <div class="col-lg-3">
+                        <div class="lp-item">
+                            <div class="lp-pic set-bg" data-setbg="{{actor.ActorImage.url}}" style="border-radius:100%;background-size:100% 100%;">
+<!--                                <div class="review-loader">-->
+<!--                                    <div class="loader-circle-wrap">-->
+<!--                                        <div class="loader-circle">-->
+<!--                                            <span class="circle-progress" data-cpid="id" data-cpvalue="75"-->
+<!--                                                data-cpcolor="#c20000"></span>-->
+<!--                                            <div class="review-point">7.5</div>-->
+<!--                                        </div>-->
+<!--                                    </div>-->
+<!--                                </div>-->
+                            </div>
+                            <div class="lp-text" style="text-align:center">
+
+                                <h5 style="color:white;"><a href="#" style="color:white;">{{actor.ActorName}}</a></h5>
+                                <h6 style="color:gray;">as {{actor.Character}}</h6>
+
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+<!--                    <div class="col-lg-3">-->
+<!--                        <div class="lp-item">-->
+<!--                            <div class="lp-pic set-bg" data-setbg="img/latest-preview/lp-2.jpg">-->
+<!--                                <div class="review-loader">-->
+<!--                                    <div class="loader-circle-wrap">-->
+<!--                                        <div class="loader-circle">-->
+<!--                                            <span class="circle-progress" data-cpid="id" data-cpvalue="75"-->
+<!--                                                data-cpcolor="#c20000"></span>-->
+<!--                                            <div class="review-point">7.5</div>-->
+<!--                                        </div>-->
+<!--                                    </div>-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                            <div class="lp-text">-->
+<!--                                <h6><a href="#">Lenovo’s y540 gaming laptop with an rtx 2060...</a></h6>-->
+<!--                                <ul>-->
+<!--                                    <li><i class="fa fa-clock-o"></i> Aug 01, 2019</li>-->
+<!--                                    <li><i class="fa fa-comment-o"></i> 12</li>-->
+<!--                                </ul>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                    <div class="col-lg-3">-->
+<!--                        <div class="lp-item">-->
+<!--                            <div class="lp-pic set-bg" data-setbg="img/latest-preview/lp-3.jpg">-->
+<!--                                <div class="review-loader">-->
+<!--                                    <div class="loader-circle-wrap">-->
+<!--                                        <div class="loader-circle">-->
+<!--                                            <span class="circle-progress" data-cpid="id" data-cpvalue="75"-->
+<!--                                                data-cpcolor="#c20000"></span>-->
+<!--                                            <div class="review-point">7.5</div>-->
+<!--                                        </div>-->
+<!--                                    </div>-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                            <div class="lp-text">-->
+<!--                                <h6><a href="#">A monter prom poster got hijacked for a...</a></h6>-->
+<!--                                <ul>-->
+<!--                                    <li><i class="fa fa-clock-o"></i> Aug 01, 2019</li>-->
+<!--                                    <li><i class="fa fa-comment-o"></i> 12</li>-->
+<!--                                </ul>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                    <div class="col-lg-3">-->
+<!--                        <div class="lp-item">-->
+<!--                            <div class="lp-pic set-bg" data-setbg="img/latest-preview/lp-4.jpg">-->
+<!--                                <div class="review-loader">-->
+<!--                                    <div class="loader-circle-wrap">-->
+<!--                                        <div class="loader-circle">-->
+<!--                                            <span class="circle-progress" data-cpid="id" data-cpvalue="75"-->
+<!--                                                data-cpcolor="#c20000"></span>-->
+<!--                                            <div class="review-point">7.5</div>-->
+<!--                                        </div>-->
+<!--                                    </div>-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                            <div class="lp-text">-->
+<!--                                <h6><a href="#">Facebook wants to read your thoughts with...</a></h6>-->
+<!--                                <ul>-->
+<!--                                    <li><i class="fa fa-clock-o"></i> Aug 01, 2019</li>-->
+<!--                                    <li><i class="fa fa-comment-o"></i> 12</li>-->
+<!--                                </ul>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                    <div class="col-lg-3">-->
+<!--                        <div class="lp-item">-->
+<!--                            <div class="lp-pic set-bg" data-setbg="img/latest-preview/lp-4.jpg">-->
+<!--                                <div class="review-loader">-->
+<!--                                    <div class="loader-circle-wrap">-->
+<!--                                        <div class="loader-circle">-->
+<!--                                            <span class="circle-progress" data-cpid="id" data-cpvalue="75"-->
+<!--                                                data-cpcolor="#c20000"></span>-->
+<!--                                            <div class="review-point">7.5</div>-->
+<!--                                        </div>-->
+<!--                                    </div>-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                            <div class="lp-text">-->
+<!--                                <h6><a href="#">Facebook wants to read your thoughts with...</a></h6>-->
+<!--                                <ul>-->
+<!--                                    <li><i class="fa fa-clock-o"></i> Aug 01, 2019</li>-->
+<!--                                    <li><i class="fa fa-comment-o"></i> 12</li>-->
+<!--                                </ul>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                    <div class="col-lg-3">-->
+<!--                        <div class="lp-item">-->
+<!--                            <div class="lp-pic set-bg" data-setbg="img/latest-preview/lp-4.jpg">-->
+<!--                                <div class="review-loader">-->
+<!--                                    <div class="loader-circle-wrap">-->
+<!--                                        <div class="loader-circle">-->
+<!--                                            <span class="circle-progress" data-cpid="id" data-cpvalue="75"-->
+<!--                                                data-cpcolor="#c20000"></span>-->
+<!--                                            <div class="review-point">7.5</div>-->
+<!--                                        </div>-->
+<!--                                    </div>-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                            <div class="lp-text">-->
+<!--                                <h6><a href="#">Facebook wants to read your thoughts with...</a></h6>-->
+<!--                                <ul>-->
+<!--                                    <li><i class="fa fa-clock-o"></i> Aug 01, 2019</li>-->
+<!--                                    <li><i class="fa fa-comment-o"></i> 12</li>-->
+<!--                                </ul>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                    <div class="col-lg-3">-->
+<!--                        <div class="lp-item">-->
+<!--                            <div class="lp-pic set-bg" data-setbg="img/latest-preview/lp-4.jpg">-->
+<!--                                <div class="review-loader">-->
+<!--                                    <div class="loader-circle-wrap">-->
+<!--                                        <div class="loader-circle">-->
+<!--                                            <span class="circle-progress" data-cpid="id" data-cpvalue="75"-->
+<!--                                                data-cpcolor="#c20000"></span>-->
+<!--                                            <div class="review-point">7.5</div>-->
+<!--                                        </div>-->
+<!--                                    </div>-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                            <div class="lp-text">-->
+<!--                                <h6><a href="#">Facebook wants to read your thoughts with...</a></h6>-->
+<!--                                <ul>-->
+<!--                                    <li><i class="fa fa-clock-o"></i> Aug 01, 2019</li>-->
+<!--                                    <li><i class="fa fa-comment-o"></i> 12</li>-->
+<!--                                </ul>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Contact Section End -->
+
+
+    <section class="latest-preview-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="section-title">
+                        <h5>Crew</h5>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+
+                <div class="lp-slider owl-carousel">
+                     {% for crew in crews %}
+                    <div class="col-lg-3">
+                        <div class="lp-item">
+                            <div class="lp-pic set-bg" data-setbg="{{crew.CrewImage.url}}" style="border-radius:100%;background-size:100% 100%;">
+<!--                                <div class="review-loader">-->
+<!--                                    <div class="loader-circle-wrap">-->
+<!--                                        <div class="loader-circle">-->
+<!--                                            <span class="circle-progress" data-cpid="id" data-cpvalue="75"-->
+<!--                                                data-cpcolor="#c20000"></span>-->
+<!--                                            <div class="review-point">7.5</div>-->
+<!--                                        </div>-->
+<!--                                    </div>-->
+<!--                                </div>-->
+                            </div>
+                            <div class="lp-text" style="text-align:center">
+
+                                <h5 style="color:white;"><a href="#" style="color:white;">{{crew.CrewName}}</a></h5>
+                                <h6 style="color:gray;">{{crew.Role}}</h6>
+
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+<!--                    <div class="col-lg-3">-->
+<!--                        <div class="lp-item">-->
+<!--                            <div class="lp-pic set-bg" data-setbg="img/latest-preview/lp-2.jpg">-->
+<!--                                <div class="review-loader">-->
+<!--                                    <div class="loader-circle-wrap">-->
+<!--                                        <div class="loader-circle">-->
+<!--                                            <span class="circle-progress" data-cpid="id" data-cpvalue="75"-->
+<!--                                                data-cpcolor="#c20000"></span>-->
+<!--                                            <div class="review-point">7.5</div>-->
+<!--                                        </div>-->
+<!--                                    </div>-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                            <div class="lp-text">-->
+<!--                                <h6><a href="#">Lenovo’s y540 gaming laptop with an rtx 2060...</a></h6>-->
+<!--                                <ul>-->
+<!--                                    <li><i class="fa fa-clock-o"></i> Aug 01, 2019</li>-->
+<!--                                    <li><i class="fa fa-comment-o"></i> 12</li>-->
+<!--                                </ul>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                    <div class="col-lg-3">-->
+<!--                        <div class="lp-item">-->
+<!--                            <div class="lp-pic set-bg" data-setbg="img/latest-preview/lp-3.jpg">-->
+<!--                                <div class="review-loader">-->
+<!--                                    <div class="loader-circle-wrap">-->
+<!--                                        <div class="loader-circle">-->
+<!--                                            <span class="circle-progress" data-cpid="id" data-cpvalue="75"-->
+<!--                                                data-cpcolor="#c20000"></span>-->
+<!--                                            <div class="review-point">7.5</div>-->
+<!--                                        </div>-->
+<!--                                    </div>-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                            <div class="lp-text">-->
+<!--                                <h6><a href="#">A monter prom poster got hijacked for a...</a></h6>-->
+<!--                                <ul>-->
+<!--                                    <li><i class="fa fa-clock-o"></i> Aug 01, 2019</li>-->
+<!--                                    <li><i class="fa fa-comment-o"></i> 12</li>-->
+<!--                                </ul>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                    <div class="col-lg-3">-->
+<!--                        <div class="lp-item">-->
+<!--                            <div class="lp-pic set-bg" data-setbg="img/latest-preview/lp-4.jpg">-->
+<!--                                <div class="review-loader">-->
+<!--                                    <div class="loader-circle-wrap">-->
+<!--                                        <div class="loader-circle">-->
+<!--                                            <span class="circle-progress" data-cpid="id" data-cpvalue="75"-->
+<!--                                                data-cpcolor="#c20000"></span>-->
+<!--                                            <div class="review-point">7.5</div>-->
+<!--                                        </div>-->
+<!--                                    </div>-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                            <div class="lp-text">-->
+<!--                                <h6><a href="#">Facebook wants to read your thoughts with...</a></h6>-->
+<!--                                <ul>-->
+<!--                                    <li><i class="fa fa-clock-o"></i> Aug 01, 2019</li>-->
+<!--                                    <li><i class="fa fa-comment-o"></i> 12</li>-->
+<!--                                </ul>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                    <div class="col-lg-3">-->
+<!--                        <div class="lp-item">-->
+<!--                            <div class="lp-pic set-bg" data-setbg="img/latest-preview/lp-4.jpg">-->
+<!--                                <div class="review-loader">-->
+<!--                                    <div class="loader-circle-wrap">-->
+<!--                                        <div class="loader-circle">-->
+<!--                                            <span class="circle-progress" data-cpid="id" data-cpvalue="75"-->
+<!--                                                data-cpcolor="#c20000"></span>-->
+<!--                                            <div class="review-point">7.5</div>-->
+<!--                                        </div>-->
+<!--                                    </div>-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                            <div class="lp-text">-->
+<!--                                <h6><a href="#">Facebook wants to read your thoughts with...</a></h6>-->
+<!--                                <ul>-->
+<!--                                    <li><i class="fa fa-clock-o"></i> Aug 01, 2019</li>-->
+<!--                                    <li><i class="fa fa-comment-o"></i> 12</li>-->
+<!--                                </ul>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                    <div class="col-lg-3">-->
+<!--                        <div class="lp-item">-->
+<!--                            <div class="lp-pic set-bg" data-setbg="img/latest-preview/lp-4.jpg">-->
+<!--                                <div class="review-loader">-->
+<!--                                    <div class="loader-circle-wrap">-->
+<!--                                        <div class="loader-circle">-->
+<!--                                            <span class="circle-progress" data-cpid="id" data-cpvalue="75"-->
+<!--                                                data-cpcolor="#c20000"></span>-->
+<!--                                            <div class="review-point">7.5</div>-->
+<!--                                        </div>-->
+<!--                                    </div>-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                            <div class="lp-text">-->
+<!--                                <h6><a href="#">Facebook wants to read your thoughts with...</a></h6>-->
+<!--                                <ul>-->
+<!--                                    <li><i class="fa fa-clock-o"></i> Aug 01, 2019</li>-->
+<!--                                    <li><i class="fa fa-comment-o"></i> 12</li>-->
+<!--                                </ul>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                    <div class="col-lg-3">-->
+<!--                        <div class="lp-item">-->
+<!--                            <div class="lp-pic set-bg" data-setbg="img/latest-preview/lp-4.jpg">-->
+<!--                                <div class="review-loader">-->
+<!--                                    <div class="loader-circle-wrap">-->
+<!--                                        <div class="loader-circle">-->
+<!--                                            <span class="circle-progress" data-cpid="id" data-cpvalue="75"-->
+<!--                                                data-cpcolor="#c20000"></span>-->
+<!--                                            <div class="review-point">7.5</div>-->
+<!--                                        </div>-->
+<!--                                    </div>-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                            <div class="lp-text">-->
+<!--                                <h6><a href="#">Facebook wants to read your thoughts with...</a></h6>-->
+<!--                                <ul>-->
+<!--                                    <li><i class="fa fa-clock-o"></i> Aug 01, 2019</li>-->
+<!--                                    <li><i class="fa fa-comment-o"></i> 12</li>-->
+<!--                                </ul>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section class="update-news-section">
+        <div class="container">
+        <div class="rows">
+            <div class="left">
+            <ul>
+                {% for review in reviews %}
+                <h3 style="color:white;"><li>{{review.user}} : </li></h3>
+                <h5 style="color:red;margin-left:150px;"><li>  {{review.review}}  </li></h5>
+                <h5 style="color:red;margin-left:155px;"><li>{{review.rate}} <span class="fas fa-star" style="color:#ffc107;"></span></li></h5>
+                <div class="stars">
+                    {% for i in 1..5 %}
+                    {% if i == review.rate %}
+                    <input type="radio" id="star{{i}}" value="{{i}}" name="rate" checked>
+                    <label for="star{{i}}" class="fas fa-star"></label>
+                    {% else %}
+                    <input type="radio" id="star{{i}}" value="{{i}}" name="rate">
+                    <label for="star{{i}}" class="fas fa-star"></label>
+                    {% endif %}
+
+                    {% endfor %}
+                </div> </li>
+                {% endfor %}
+            </ul>
+                </div>
+            <div class="right">
+                <h4 style="color:white;">Add your review & rating here!</h4>
+            <div class="col-sm-12">
+
+                <form method="post" action="{% url 'save_review' movie_details.id %}" >
+                    {% csrf_token %}
+                    <input type="text" name="username" value="{{ username }}" readonly>
+                    <input type="text" name="movie_id" value="{{movie_details.MovieName}}" readonly>
+                    <input type="text" name="review" placeholder="review">
+                    <input type="text" name="date" value="{{ current_date }}" readonly>
+                    <div class="stars" style="margin-top:20px;margin-left:140px;">
+                    <input type="radio" id="star-5" value="5" name="rate">
+                    <label for="star-5" class="fas fa-star"></label>
+                    <input type="radio" id="star-4" value="4" name="rate">
+                    <label for="star-4" class="fas fa-star"></label>
+                    <input type="radio" id="star-3" value="3" name="rate">
+                    <label for="star-3" class="fas fa-star"></label>
+                    <input type="radio" id="star-2" value="2" name="rate">
+                    <label for="star-2" class="fas fa-star"></label>
+                    <input type="radio" id="star-1" value="1" name="rate">
+                    <label for="star-1" class="fas fa-star"></label>
+                        </div><br>
+
+                    <button type="submit" class="btn" style="margin-left:110px;">submit</button>
+                </form>
+
+            </div>
+            </div>
+        </div>
+        </div>
+    </section>
+
+    <!-- Footer Section Begin -->
+    <footer class="footer-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="footer-about">
+                        <div class="fa-logo">
+                            <a href="#"><img src="{% static 'home/img/f-logo.png' %}" alt=""></a>
+                        </div>
+                        <p>Providing user friendly interface for booking movie tickets.</p>
+                        <div class="fa-social">
+                            <a href="#"><i class="fa fa-facebook" style="margin-top:15px;"></i></a>
+                            <a href="#"><i class="fa fa-twitter" style="margin-top:15px;"></i></a>
+                            <a href="#"><i class="fa fa-youtube-play" style="margin-top:15px;"></i></a>
+                            <a href="#"><i class="fa fa-instagram" style="margin-top:15px;"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-12">
+                    <div class="editor-choice">
+                        <div class="section-title">
+                            <h5>Editor's Choice</h5>
+                        </div>
+                        <div class="ec-item">
+                            <div class="ec-pic">
+                                <img src="img/trending/editor-1.jpg" alt="">
+                            </div>
+                            <div class="ec-text">
+                                <h6><a href="#">A Monster Prom poster got hijacked for a Papa Roach concert...</a>
+                                </h6>
+                                <ul>
+                                    <li><i class="fa fa-clock-o"></i> Aug 01, 2019</li>
+                                    <li><i class="fa fa-comment-o"></i> 12</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="ec-item">
+                            <div class="ec-pic">
+                                <img src="img/trending/editor-2.jpg" alt="">
+                            </div>
+                            <div class="ec-text">
+                                <h6><a href="#">Facebook wants to read your thoughts with its augmented...</a>
+                                </h6>
+                                <ul>
+                                    <li><i class="fa fa-clock-o"></i> Aug 01, 2019</li>
+                                    <li><i class="fa fa-comment-o"></i> 12</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+<!--                <div class="col-lg-4 col-md-6">-->
+<!--                    <div class="tags-cloud">-->
+<!--                        <div class="section-title">-->
+<!--                            <h5>Tags Cloud</h5>-->
+<!--                        </div>-->
+<!--                        <div class="tag-list">-->
+<!--                            <a href="#"><span>Gaming</span></a>-->
+<!--                            <a href="#"><span>Platform</span></a>-->
+<!--                            <a href="#"><span>Playstation</span></a>-->
+<!--                            <a href="#"><span>Hardware</span></a>-->
+<!--                            <a href="#"><span>Reviews</span></a>-->
+<!--                            <a href="#"><span>Simulation</span></a>-->
+<!--                            <a href="#"><span>Strategy</span></a>-->
+<!--                            <a href="#"><span>Scientific</span></a>-->
+<!--                            <a href="#"><span>References</span></a>-->
+<!--                            <a href="#"><span>Role-playing</span></a>-->
+<!--                            <a href="#"><span>Adventurea</span></a>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+            </div>
+            <div class="copyright-area">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="ca-text"><p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+  Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved |
+  <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p></div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="ca-links">
+                            <a href="{% url 'about_page' %}">About</a>
+
+                            <a href="{% url 'contact_page' %}">Contact</a>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- Footer Section End -->
+
+
+
+    <!-- Search model Begin -->
+    <div class="search-model">
+        <div class="h-100 d-flex align-items-center justify-content-center">
+            <div class="search-close-switch">+</div>
+            <form class="search-model-form" method="get" action="{% url 'search_view' %}">
+                <input type="text" id="search-input" name="query" placeholder="Search here.....">
+            </form>
+        </div>
+    </div>
+    <!-- Search model end -->
+
+    <style>
+        .div1{
+            width:1349px;
+            height:500px;
+            background-image:linear-gradient(rgba(23, 23, 24, 0.7),rgba(46, 47, 48, 0.7)),url({{movie_details.Poster1.url}});
+            background-repeat:no-repeat;
+            background-size:100% 100%;
+            margin-top:-65px;
+        }
+        .div2{
+            width:320px;
+            height:390px;
+            margin-left:200px;
+            margin-top:-250px;
+            box-shadow: 0 0 40px 2px rgba(37,73,214,0.14);
+
+        }
+        .div3{
+            margin-left:400px;
+            margin-top:-430px;
+            width:1000px;
+        }
+         .popup {
+        display:none;
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+        z-index: 9999;
+        width:800px;
+        max-height:600px;
+        overflow-y:auto;
+    }
+    .popup img {
+
+        display: block;
+        margin: 0 auto;
+        border-radius: 5px;
+    }
+    .popup p {
+        text-align: center;
+        margin-top: 10px;
+    }
+    .close-btn {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        cursor: pointer;
+    }
+        .popup a{
+        color:green;
+        text-decorations:None;
+        }
+
+    .stars{
+        display: inline-block;
+        font-size: 20px;
+        }
+    .stars input[type="radio"]{
+        display:none;
+        }
+    .stars label{
+        cursor:pointer;
+        color:#ccc;
+        }
+    .stars label:hover,
+    .stars label:hover ~ label,
+    .stars input[type="radio"]:checked ~ label{
+        color:#ffc107;
+        }
+
+    .left{
+        width:400px;
+        margin-left:100px;
+        color:white;
+
+        padding-top:30px;
+     }
+     .left ul{
+     list-style-type: none;
+     }
+     .right{
+        width:500px;
+
+        margin-left:650px;
+
+     }
+     input{
+    width: 200px;
+    background: transparent;
+    border: solid 1px grey;
+    outline: 0;
+    padding: 18px 15px;
+    font-size: 16px;
+    color:red;
+    border-radius:30px;
+    margin-top:20px;
+    text-align:center;
+}
+        .btn{
+    flex-basis: 48%;
+    background: red;
+    color: #fff;
+    height: 40px;
+    border-radius: 20px;
+    border: 0;
+    outline: 0;
+    cursor: pointer;
+    transition: background 1s;
+    width:200px;
+    margin-top:30px;
+}
+    </style>
+
+
+
+    <!-- Js Plugins -->
+    <script src="{% static 'home/js/jquery-3.3.1.min.js' %}"></script>
+    <script src="{% static 'home/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'home/js/jquery.magnific-popup.min.js' %}"></script>
+    <script src="{% static 'home/js/circle-progress.min.js' %}"></script>
+    <script src="{% static 'home/js/jquery.barfiller.js' %}"></script>
+    <script src="{% static 'home/js/jquery.slicknav.js' %}"></script>
+    <script src="{% static 'home/js/owl.carousel.min.js' %}"></script>
+    <script src="{% static 'home/js/main.js' %}"></script>
+
+
+
+
+    <script>
+function openPopup() {
+    var popup = document.getElementById("myPopup");
+    popup.style.display = "block";
+}
+
+function closePopup() {
+    var popup = document.getElementById("myPopup");
+    popup.style.display = "none";
+}
+
+
+</script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+{% if messages %}
+    {% for i in messages %}
+        {% if i.tags == 'warning' %}
+            <script>
+                swal('{{i}}','','warning')
+            </script>
+        {% elif i.tags == 'error' %}
+            <script>
+                swal('{{i}}','','error')
+            </script>
+        {% elif i.tags == 'success' %}
+            <script>
+                swal('{{i}}','','success')
+            </script>
+        {% else %}
+             <script>
+                swal('{{i}}','','info')
+            </script>
+        {% endif %}
+    {% endfor %}
+{% endif %}
+
+</body>
+
+</html>

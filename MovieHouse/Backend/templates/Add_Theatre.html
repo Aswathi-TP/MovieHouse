@@ -1,0 +1,96 @@
+<!--<!DOCTYPE html>-->
+{% extends 'index.html' %}
+{% block content %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="col-sm-12 col-md-12" style="margin-top:20px;">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="card-title">Add Theatres</h4>
+
+                                <form class="mt-4" method="post" action="{% url 'save_theatre' %}" enctype="multipart/form-data">
+                                    {% csrf_token %}
+                                    <div class="form-group">
+                                        <label>Theatre Name</label>
+                                        <input type="text" class="form-control" placeholder="Name" name="tname" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Theatre Address</label>
+                                        <textarea class="form-control" rows="3" placeholder="Address" name="taddress" required></textarea>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Contact</label>
+                                        <input type="tel" required class="form-control" placeholder="Number" name="tcontact">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Email</label>
+                                        <input type="email" class="form-control" placeholder="abc@example.com" name="temail" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Screens</label>
+                                        <input type="number" class="form-control" placeholder="Screens" name="tscreen">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Capacity</label>
+                                        <input type="number" class="form-control" placeholder="Seating capacity" name="tcapacity">
+                                    </div>
+                                    <div class="form-group mb-4">
+                                        <label class="mr-sm-2" for="inlineFormCustomSelect">Status</label>
+                                        <select class="custom-select mr-sm-2" id="inlineFormCustomSelect" name="tstatus">
+                                            <option selected="">Choose...</option>
+                                            <option>Open</option>
+                                            <option>Closed</option>
+                                        </select>
+                                    </div>
+                                    <label>Upload Image</label>
+                                    <div class="input-group mb-3">
+
+                                        <div class="input-group-prepend">
+
+                                            <span class="input-group-text">Upload</span>
+                                        </div>
+                                        <div class="custom-file">
+                                            <input type="file" class="custom-file-input" id="inputGroupFile01" name="timage">
+                                            <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+                                        </div>
+                                    </div>
+                                    <div class="form-actions">
+                                        <div class="text-center">
+                                            <button type="submit" class="btn btn-info">Submit</button>
+                                            <button type="reset" class="btn btn-dark">Reset</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+{% if messages %}
+    {% for i in messages %}
+        {% if i.tags == 'warning' %}
+            <script>
+                swal('{{i}}','','warning')
+            </script>
+        {% elif i.tags == 'error' %}
+            <script>
+                swal('{{i}}','','error')
+            </script>
+        {% elif i.tags == 'success' %}
+            <script>
+                swal('{{i}}','','success')
+            </script>
+        {% else %}
+             <script>
+                swal('{{i}}','','info')
+            </script>
+        {% endif %}
+    {% endfor %}
+{% endif %}
+</body>
+</html>
+{% endblock %}

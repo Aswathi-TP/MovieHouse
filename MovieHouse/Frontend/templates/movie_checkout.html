@@ -1,0 +1,417 @@
+
+<!--<!DOCTYPE html>-->
+{% load static %}
+<html lang="zxx">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Amin Template">
+    <meta name="keywords" content="Amin, unica, creative, html">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Amin | Template</title>
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600,700,800,900&display=swap"
+        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Cinzel:400,700,900&display=swap" rel="stylesheet">
+
+    <!-- Css Styles -->
+    <link rel="stylesheet" href="{% static 'home/css/bootstrap.min.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'home/css/font-awesome.min.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'home/css/elegant-icons.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'home/css/owl.carousel.min.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'home/css/barfiller.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'home/css/magnific-popup.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'home/css/slicknav.min.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'home/css/style.css' %}" type="text/css">
+</head>
+
+<body>
+    <!-- Page Preloder -->
+    <div id="preloder">
+        <div class="loader"></div>
+    </div>
+
+    <!-- Humberger Menu Begin -->
+    <div class="humberger-menu-overlay"></div>
+   <div class="humberger-menu-wrapper">
+        <div class="hw-logo">
+            <a href="#"><img src="{% static 'home/img/f-logo.png' %}" alt=""></a>
+        </div>
+        <div class="hw-menu mobile-menu">
+            <ul>
+                <li><a href="{% url 'homepage' %}">Home</a></li>
+                <li><a href="{% url 'about_page' %}">About</a></li>
+                <li><a href="{% url 'contact_page' %}">Contact</a></li>
+                {% if username %}
+                <li><a href="{% url 'user_logout' %}">LogOut</a></li>
+                {% endif %}
+            </ul>
+        </div>
+        <div id="mobile-menu-wrap"></div>
+        <div class="hw-copyright">
+            Copyright © 2024. All rights reserved
+        </div>
+        <div class="hw-social">
+            <a href="#"><i class="fa fa-facebook" style="margin-top:15px;"></i></a>
+            <a href="#"><i class="fa fa-twitter" style="margin-top:15px;"></i></a>
+            <a href="#"><i class="fa fa-youtube-play" style="margin-top:15px;"></i></a>
+            <a href="#"><i class="fa fa-instagram" style="margin-top:15px;"></i></a>
+        </div>
+
+    </div>
+    <!-- Humberger Menu End -->
+
+    <!-- Header Section Begin -->
+    <header class="header-section">
+        <div class="ht-options">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6 col-md-8">
+                        <div class="ht-widget">
+                            <ul>
+                         <li><i class="fa fa-clock-o"></i>{{ current_date }}</li>
+                    {% if username %}
+                <li class="nav-item"><a href="{% url 'user_logout' %}" class="nav-link" style="color:white;">Welcome {{ username }} / Logout</a></li>
+                                {% else %}
+                <li class="nav-item"><a href="{% url 'login_signup' %}" class="nav-link" style="color:white;">Register / Login</a></li>
+                    {% endif %}
+
+<!--                <li class="nav-item"><a href="{% url 'user_login' %}" class="nav-link">Register / Login</a></li>-->
+
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-4">
+                        <div class="ht-social">
+                            <a href="#"><i class="fa fa-facebook"></i></a>
+                            <a href="#"><i class="fa fa-twitter"></i></a>
+                            <a href="#"><i class="fa fa-youtube-play"></i></a>
+                            <a href="#"><i class="fa fa-instagram"></i></a>
+                            <a href="#"><i class="fa fa-envelope-o"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="logo">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12 text-center">
+                       <a href="./index.html"><img src="{% static 'home/img/logo.png' %}" alt=""></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="nav-options">
+            <div class="container">
+                <div class="humberger-menu humberger-open">
+                    <i class="fa fa-bars"></i>
+                </div>
+                <div class="nav-search search-switch">
+                    <i class="fa fa-search"></i>
+                </div>
+                <div class="nav-menu">
+                    <ul>
+                        <li><a href="{% url 'homepage' %}"><span>Home</span></a></li>
+
+                        <li><a href="{% url 'movie_details' %}"><span>Movies </span></a></li>
+                        <li><a href="{% url 'contact_page' %}"><span>Contact</span></a></li>
+                         <li><a href="{% url 'about_page' %}"><span>About</span></a></li>
+                         {% if username %}
+                        <li><a href="{% url 'booking_history' %}"><span>Booking History</span></a></li>
+                        <li>
+                            <a href="#"><span>{{ username }}<i class="fa fa-angle-down"></i></span></a>
+                            <ul class="dropdown">
+                                <li><a href="{% url 'profile_update' %}">Profile</a></li>
+                                <li><a href="{% url 'user_logout' %}">LogOut</a></li>
+
+                            </ul>
+                        </li>
+
+                        {% else %}
+                         <li><a href="{% url 'home' %}"> <span> Register / Login</span></a></li>
+
+                        {% endif %}
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- Header End -->
+
+    <!-- Breadcrumb Section Begin -->
+    <section class="breadcrumb-section set-bg spad" data-setbg="{% static 'home/img/checkoutbg.jpg' %}" style="background-size:100% 100%;">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <div class="breadcrumb-text">
+                        <h3>Check Out</h3>
+                        <div class="bt-option">
+                            <a href="./home.html">Home</a>
+                            <span>CheckOut</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Breadcrumb Section End -->
+
+    <!-- Contact Section Begin -->
+    <section class="contact-section spad">
+        <div class="container">
+           <div class="div1 mb-3">
+               <a><button style="border-radius:10px; width:200px; height:50px; background:red; color:white;" class="mb-2"><b>BACK</b></button></a>
+           </div>
+            <div class="div2">
+                <div class="left">
+                    <h4 style="color:white;font-size:33px;padding-top:50px;">Share Your Contact Details</h4>
+
+                    <br>
+                    <div class="sub">
+                    {% if username %}
+                    <h3 style="color:white;padding-top:10px;">{{ username }}</h3><br>
+                    {% endif %}
+                        {% if email %}
+                    <h5 style="color:white;">{{email}}</h5>
+                        {% endif %}
+                        </div>
+                </div>
+                <div class="right">
+                    <h4 style="color:white;text-align:center;margin:80px;font-size:33px;">booking summery</h4>
+                    <div style="height:250px;padding-left:60px;color:white;">
+                    {% if data %}
+                        <table style="color:white;">
+                            <tr>
+                                <td>Theatre Name</td>
+                                <td>:</td>
+                                <td>{{ data.TheatreName }}</td>
+                            </tr>
+                            <tr>
+                                <td>Movie Name</td>
+                                <td>:</td>
+                                <td>{{ data.MovieName }}</td>
+                            </tr>
+                            <tr>
+                                <td>Seat Name</td>
+                                <td>:</td>
+                                <td>{{ data.SeatNum }}</td>
+                            </tr>
+                            <tr>
+                                <td>Date</td>
+                                <td>:</td>
+                                <td>{{ data.Date }}</td>
+                            </tr>
+                            <tr>
+                                <td>Time</td>
+                                <td>:</td>
+                                <td>{{ data.Time }}</td>
+                            </tr>
+                            <tr>
+                                <td>Theatre Address</td>
+                                <td>:</td>
+                                <td>{{ data.TheatreAddress }}</td>
+                            </tr>
+                            <tr>
+                                <td>Total Price</td>
+                                <td>:</td>
+                                <td>{{ data.TotalPrice }}</td>
+                            </tr>
+                        </table>
+
+                        </div>
+                    {% endif %}
+                    <form class="text-center border border-light p-5" action="{% url 'save_booking' %}" method="POST">
+        {% csrf_token %}
+
+
+<!--        <input type="name" name="name" id="name" required class="form-control mb-4" placeholder="Name">-->
+        <input type="hidden" name="booking_id" value="{{ data.id }}">
+        <input type="hidden" name="name" value="{{ data.UserName }}">
+        <input type="hidden" name="movie_name" value="{{ data.MovieName }}">
+        <input type="hidden" name="theatre_name" value="{{ data.TheatreName }}">
+        <input type="hidden" name="theatre_address" value="{{ data.TheatreAddress }}">
+        <input type="hidden" name="selected_date" value="{{ data.Date }}">
+        <input type="hidden" name="selected_time" value="{{ data.Time }}">
+        <input type="hidden" name="seat_number" value="{{ data.SeatNum }}">
+        <input type="hidden" name="amount_paid" value="{{ data.TotalPrice }}">
+
+        <!-- RAZORPAY INTEGRATION HERE -->
+        <script src="https://checkout.razorpay.com/v1/checkout.js"
+                data-key="rzp_test_F6nhWoihwx4CSE"
+                data-amount="{{ data.TotalPrice }}"
+                data-currency="INR"
+                data-order_id="{{payment.id}}"
+                data-buttontext="Pay with Razorpay"
+                data-name="Professional Cipher"
+                data-description="Django and Data Science"
+                data-image="https://example.com/your_logo.jpg"
+                data-prefill.name="PC"
+                data-prefill.email="pc@studygyaan.com"
+                data-theme.color="#F37254"></script>
+    </form>
+                </div>
+            </div>
+        </div>
+
+    </section>
+    <!-- Contact Section End -->
+
+    <!-- Footer Section Begin -->
+    <footer class="footer-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="footer-about">
+                        <div class="fa-logo">
+                            <a href="#"><img src="{% static 'home/img/f-logo.png' %}" alt=""></a>
+                        </div>
+                        <p>Providing user friendly interface for booking movie tickets.</p>
+                        <div class="fa-social">
+                            <a href="#"><i class="fa fa-facebook" style="margin-top:15px;"></i></a>
+                            <a href="#"><i class="fa fa-twitter" style="margin-top:15px;"></i></a>
+                            <a href="#"><i class="fa fa-youtube-play" style="margin-top:15px;"></i></a>
+                            <a href="#"><i class="fa fa-instagram" style="margin-top:15px;"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-12">
+                    <div class="editor-choice">
+                        <div class="section-title">
+                            <h5>Editor's Choice</h5>
+                        </div>
+                        <div class="ec-item">
+                            <div class="ec-pic">
+                                <img src="img/trending/editor-1.jpg" alt="">
+                            </div>
+                            <div class="ec-text">
+                                <h6><a href="#">A Monster Prom poster got hijacked for a Papa Roach concert...</a>
+                                </h6>
+                                <ul>
+                                    <li><i class="fa fa-clock-o"></i> Aug 01, 2019</li>
+                                    <li><i class="fa fa-comment-o"></i> 12</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="ec-item">
+                            <div class="ec-pic">
+                                <img src="img/trending/editor-2.jpg" alt="">
+                            </div>
+                            <div class="ec-text">
+                                <h6><a href="#">Facebook wants to read your thoughts with its augmented...</a>
+                                </h6>
+                                <ul>
+                                    <li><i class="fa fa-clock-o"></i> Aug 01, 2019</li>
+                                    <li><i class="fa fa-comment-o"></i> 12</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+<!--                <div class="col-lg-4 col-md-6">-->
+<!--                    <div class="tags-cloud">-->
+<!--                        <div class="section-title">-->
+<!--                            <h5>Tags Cloud</h5>-->
+<!--                        </div>-->
+<!--                        <div class="tag-list">-->
+<!--                            <a href="#"><span>Gaming</span></a>-->
+<!--                            <a href="#"><span>Platform</span></a>-->
+<!--                            <a href="#"><span>Playstation</span></a>-->
+<!--                            <a href="#"><span>Hardware</span></a>-->
+<!--                            <a href="#"><span>Reviews</span></a>-->
+<!--                            <a href="#"><span>Simulation</span></a>-->
+<!--                            <a href="#"><span>Strategy</span></a>-->
+<!--                            <a href="#"><span>Scientific</span></a>-->
+<!--                            <a href="#"><span>References</span></a>-->
+<!--                            <a href="#"><span>Role-playing</span></a>-->
+<!--                            <a href="#"><span>Adventurea</span></a>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+            </div>
+            <div class="copyright-area">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="ca-text"><p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+  Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved |
+  <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p></div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="ca-links">
+                            <a href="{% url 'about_page' %}">About</a>
+
+                            <a href="{% url 'contact_page' %}">Contact</a>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- Footer Section End -->
+
+
+
+    <!-- Search model Begin -->
+    <div class="search-model">
+        <div class="h-100 d-flex align-items-center justify-content-center">
+            <div class="search-close-switch">+</div>
+            <form class="search-model-form" method="get" action="{% url 'search_view' %}">
+                <input type="text" id="search-input" name="query" placeholder="Search here.....">
+            </form>
+        </div>
+    </div>
+    <!-- Search model end -->
+
+ <style>
+     .div1{
+        width:95%;
+        height:150px;
+        display:flex;
+     }
+     .div2{
+        width:95%;
+        height:800px;
+
+        display:flex;
+     }
+     .left{
+        width:500px;
+        height:300px;
+
+        background-color:black;
+     }
+     .right{
+        width:500px;
+        height:580px;
+        border:solid 1px grey;
+        background-color:black;
+        margin-left:80px;
+     }
+     .sub{
+        width:300px;
+        height:100px;
+
+        margin-left:80px;
+        margin-top:20px;
+        text-align:center;
+        background-color:black;
+     }
+ </style>
+
+
+    <!-- Js Plugins -->
+    <script src="{% static 'home/js/jquery-3.3.1.min.js' %}"></script>
+    <script src="{% static 'home/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'home/js/jquery.magnific-popup.min.js' %}"></script>
+    <script src="{% static 'home/js/circle-progress.min.js' %}"></script>
+    <script src="{% static 'home/js/jquery.barfiller.js' %}"></script>
+    <script src="{% static 'home/js/jquery.slicknav.js' %}"></script>
+    <script src="{% static 'home/js/owl.carousel.min.js' %}"></script>
+    <script src="{% static 'home/js/main.js' %}"></script>
+</body>
+
+</html>
